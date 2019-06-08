@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Selecione o tipo de conta</title>
+    <style>
+        .bg-login{
+            background-image: url('https://mdbootstrap.com/img/Photos/Others/images/90.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-login">
+    <div class="flex flex-1 flex-row flex-wrap font-sans h-screen w-full">
+        <!--Estudante-->
+        <div class="flex flex-wrap h-screen md:w-1/2">
+            <div class="mx-auto my-auto w-1/2">
+                <div class="bg-white overflow-hidden rounded-lg shadow-md">
+                    <img alt="student-profile" class="block h-auto w-full" src="https://cdn2.hercampus.com/styles/hcxo_standard_large/s3/hero-images/2019/04/30/backpacks-college-college-students-1454360.jpg?timestamp=1556652670">
+                    <div class="flex flex-col p-2 md:p-4 text-center">
+                        <h2 class="text-2xl font-bold">Estudante</h2>
+                        <p class="text-gray-700 text-sm">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
+                            perferendis eaque,
+                            exercitationem praesentium nihil.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center p-2 md:p-4">
+                        <a href="{{ url_estudante }}" class=" btn bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-5 md:py-3 md:px-8 rounded-full">Escolher</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Empresa-->
+        <div class="flex flex-wrap h-screen md:w-1/2">
+            <div class="mx-auto my-auto w-1/2">
+                <div class="bg-white overflow-hidden rounded-lg shadow-md">
+                    <img alt="company-profile" class="block h-auto w-full" src="https://c.pxhere.com/images/c2/51/953498f817c9c36d60b65428c1c3-1450067.jpg!d">
+                    <div class="flex flex-col p-2 md:p-4 text-center">
+                        <h2 class="text-2xl font-bold">Empresa</h2>
+                        <p class="text-gray-700 text-sm">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
+                            perferendis eaque,
+                            exercitationem praesentium nihil.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center p-2 md:p-4">
+                        <a href="{{ url_empresa }}" class="btn bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-5 md:py-3 md:px-8 rounded-full">Escolher</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

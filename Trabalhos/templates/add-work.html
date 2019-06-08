@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar trabalho</title>
+</head>
+<body>
+    <h1>Adicionar trabalho</h1>
+    <form action="/webapp/user/works/add/try/" method="post">
+        {% csrf_token %}
+        <input name="titulo" type="text" placeholder="titulo" style="display: block;" required>
+        <input name="inicio" type="datetime-local" placeholder="inicio" style="display: block;" required>
+        <input name="fim" type="datetime-local" placeholder="fim" style="display: block;" required>
+        <input name="pagamento" type="number" placeholder="pagamento" style="display: block;" required>
+        <textarea name="descricao" type="text" placeholder="descricao" style="display: block;" required></textarea>
+        <input name="requisitos" type="text" placeholder="requisto, requisito" style="display: block;" required>
+        <input type="submit"></form>
+</body>
+</html>

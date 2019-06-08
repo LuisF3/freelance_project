@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./styles/style.css">
+        <title>Estudante</title>
+    </head>
+    <body class="bg-gray-200">
+        <div class="flex w-full font-sans h-screen justify-center w-full">
+            <div class="flex flex-wrap md:w-2/3 justify-center">
+                <form method="POST" action="{% url 'webapp:estudante:register_page' %}try/" class="bg-white rounded shadow-lg w-5/6 md:w-2/3 md:px-16 my-auto" id="form">
+                    {% csrf_token %}
+                    <h2 class="text-purple-900 text-center font-semibold mt-2 text-2xl md:text-4xl">Estudante</h2>
+                    <hr class="hr-purple">
+                    <div class="mb-4 md:mr-48 mx-4 md:mx-0">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">E-mail</label>
+                        <input name="email" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="email" type="email" placeholder="E-mail">
+                        {% if used_email %}
+                        <span class="text-red-600">Email já usado</span>
+                        {% endif %}
+                    </div>
+                    <div class="mb-4 md:mr-48 mx-4 md:mx-0">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Nome de usuário</label>
+                        <input name="username" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="username" type="text" placeholder="Nome de usuário">
+                        {% if used_username %}
+                        <span class="text-red-600">Usuário já usado</span>
+                        {% endif %}
+                    </div>
+                    <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
+                        <div class="mr-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nome</label>
+                            <input name="first_name" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="name" type="text" placeholder="Nome">
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="surname">Sobrenome</label>
+                            <input name="last_name" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="surname" type="text" placeholder="Sobrenome">
+                        </div>
+                    </div>
+                    <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
+                        <div class="mr-6 mb-4 md:mb-0">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="university">Universidade</label>
+                            <input name="university" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="university" type="text" placeholder="Universidade">
+                        </div>
+                        <div class=class="mt-4 md:mt-0">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="year">Ano de conclusão</label>
+                            <select name="formatura" class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="year">
+                                <option value="0" id="ano-null" disabled selected>Selecione</option>
+                                <option value="1" id="ano-0"></option>
+                                <option value="2" id="ano-1"></option>
+                                <option value="3" id="ano-2"></option>
+                                <option value="4" id="ano-3"></option>
+                                <option value="5" id="ano-4"></option>
+                                <option value="6" id="ano-5"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-4 md:mr-48 mx-4 md:mx-0">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="course">Curso</label>
+                        <input name="curso" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="course" type="text" placeholder="Curso">
+                    </div>
+                    <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
+                        <div class="mr-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Senha</label>
+                            <input name="password" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="password" type="password" placeholder="Senha">
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password-repeated">Repetir senha</label>
+                            <input required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="password-repeated" type="password" placeholder="Repetir senha">
+                        </div>
+                    </div>
+                    <div class="mt-4 mb-8 text-center">
+                        <input type="submit" class="bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-5 md:px-8 rounded-full">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
