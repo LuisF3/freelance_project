@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['https://fl-project.herokuapp.com/', 'localhost:8000']
+ALLOWED_HOSTS = ['fl-project.herokuapp.com/', 'localhost:8000']
 
 
 # Application definition
