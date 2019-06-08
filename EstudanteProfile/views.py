@@ -36,4 +36,4 @@ def register_attempt(request):
     EstudanteProfile.objects.create(user=new_user, universidade=universidade,
                                     curso=curso, previsao_de_formatura=int(previsao_formatura))
     login(request, new_user)
-    return render(request, 'created-account.html', {'home': '/webapp/'})
+    return render(request, 'created-account.html', {'home': '/'})

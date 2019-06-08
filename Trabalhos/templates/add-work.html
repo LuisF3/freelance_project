@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Adicionar trabalho</h1>
-    <form action="/webapp/user/works/add/try/" method="post">
+    <form action="{% url 'webapp:trabalho:add_work' %}try/" method="post">
         {% csrf_token %}
         <input name="titulo" type="text" placeholder="titulo" style="display: block;" required>
         <input name="inicio" type="datetime-local" placeholder="inicio" style="display: block;" required>

@@ -34,4 +34,4 @@ def register_attempt(request):
     EmpresaProfile.objects.create(user=new_user, cidade=city,
                                   area=area)
     login(request, new_user)
-    return render(request, 'created-account.html', {'home': '/webapp/'})
+    return render(request, 'created-account.html', {'home': '/'})
