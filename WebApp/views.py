@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, Http404, HttpResponseRedirect
@@ -10,12 +11,11 @@ def home(request):
     if hasattr(request.user, 'empresaprofile'):
         return HttpResponseRedirect(reverse('webapp:empresa:home_page'))
     elif hasattr(request.user, 'estudanteprofile'):
-        string += f"<br><a href='{reverse('webapp:estudante:trabalho:all_works')}'>Trabalhos disponíveis</a>"
+        return HttpResponseRedirect(reverse('webapp:estudante:home_page'))
 
     string += f"<br><a href='{reverse('webapp:login_page')}'>Login</a>" if not request.user.is_authenticated \
         else f"<br>{request.user.username}: <a href='{reverse('webapp:logout_page')}'>Logout</a>"
     return HttpResponse(string)
-
 
 
 def register_page(request):
@@ -44,5 +44,11 @@ def login_attempt(request):
 
 def logout_page(request):
     logout(request)
-    return HttpResponse(f"Logged out<br><a href='{reverse('webapp:home_page')}'>Voltar para a pagina principal</a>")
+    return HttpResponseRedirect(reverse('webapp:home_page'))
 
+
+def profile_page(request, username):
+    user = User.objects.get(username=username)
+    user = user.estudanteprofile if hasattr(user, 'estudanteprofile') else user.empresaprofile
+
+    return render(request, 'webapp-profile_page.html', {'user': user, 'isStudent': hasattr(user, 'estudanteprofile')})

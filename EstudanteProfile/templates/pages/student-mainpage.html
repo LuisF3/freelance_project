@@ -1,4 +1,4 @@
-{% extends "business-navbar.html" %}
+{% extends "student-navbar.html" %}
 {% block title %}
 <title>Home</title>
 {% endblock %}
@@ -17,13 +17,13 @@
                     No description.
                 {% endif %}
             </p>
-            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-code-branch mr-2"></i>Empresa da área "{{ user.empresaprofile.area }}"</span> <!--https://fontawesome.com/icons/code-branch?style=solid-->
-            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-map-marker-alt mr-2"></i>Situada em "{{ user.empresaprofile.cidade }}"</span> <!--https://fontawesome.com/icons/map-marker-alt?style=solid-->
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-graduation-cap mr-2"></i>Estudante no(a) {{ user.universidade }}</span>                  <!--https://fontawesome.com/icons/graduation-cap?style=solid-->
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-book mr-2"></i>Cursa {{ user.curso }}</span> <!--https://fontawesome.com/icons/book?style=solid-->
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-users mr-2"></i>Membro de algum grupo</span> <!--https://fontawesome.com/icons/users?style=solid-->
         </div>
     </div>
     <!--Lista de trabalhos-->
     <div class="w-full md:w-2/5 bg-white flex flex-col">
-        {% include "add-work.html" with add_work_link=add_work_link%}
         {% include "work-proposal.html" with proposals=proposals work_detail=work_detail %}
     </div>
 </div>

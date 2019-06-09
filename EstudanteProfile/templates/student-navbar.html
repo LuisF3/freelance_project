@@ -1,0 +1,28 @@
+{% extends "mainpage.html" %}
+
+{% block navbar %}
+<!--Navbar-->
+<nav class="w-full overflow-auto bg-white fixed shadow-md sticky top-0">
+    <ul class="m-0 p-0 list-none leading-3_75">
+        <li class="float-left w-full mdw-36 text-center">
+            <a href="{% url 'webapp:estudante:home_page' %}" class="font-semibold w-24 no-underline block text-purple-800 text-lg hover-xl hover:text-purple-600 w-full">Início</a>
+        </li>
+        <li class="float-left w-full mdw-36 text-center">
+            <a href="#" class="font-semibold w-24 no-underline block text-purple-800 text-lg hover-xl hover:text-purple-600 w-full">Conta</a>
+        </li>
+        <li class="float-left w-full mdw-36 text-center">
+            <a href="{% url 'webapp:estudante:subscribed_works' %}" class="font-semibold w-24 no-underline block text-purple-800 text-lg hover-xl hover:text-purple-600 w-full">Trabalhos inscritos</a>
+        </li>
+        <li class="float-right w-full mdw-36 text-center">
+            <a href="{% url 'webapp:logout_page' %}" class="font-semibold w-24 no-underline block text-purple-800 text-lg hover-xl hover:text-purple-600 w-full">Sair</a>
+        </li>
+        <li class="float-right w-full mdw-36 text-center">
+            <span class="font-semibold no-underline block text-purple-800 text-lg">{{ user }}</span>
+        </li>
+    </ul>
+    <form class="hidden md:block float-right m-4 mr-16">
+        <input type="text" name="" placeholder="Procurar trabalho..." class="w-64 border-none outline-none bg-gray-100 p-0-1 rounded-l h-8">
+        <input type="submit" value="Pesquisar" class="border-none outline-none w-24 h-8 rounded-r bg-purple-800 hover:bg-purple-600 text-white font-semibold relative left-n-0_5">
+    </form>
+</nav>
+{% endblock %}
