@@ -1,68 +1,63 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./styles/style.css">
-        <title>Empresa</title>
-    </head>
-    <body class="bg-gray-200">
-        <div class="flex w-full font-sans h-screen justify-center w-full">
-            <div class="flex flex-wrap md:w-2/3 justify-center">
-                <form method="POST" action="{% url 'webapp:empresa:register_page' %}try/" class="bg-white rounded shadow-lg w-5/6 md:w-2/3 md:px-16 my-auto" id="form">
-                    {% csrf_token %}
-                    <h2 class="text-purple-900 text-center font-semibold mt-2 text-2xl md:text-4xl">Empresa</h2>
-                    <hr class="hr-purple">
-                    <div class="mb-4 md:mr-48 mx-4 md:mx-0">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">E-mail</label>
-                        <input name="email" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="email" type="text" placeholder="E-mail">
-                        {% if used_email %}
-                        <span class="text-red-600">Email já usado</span>
-                        {% endif %}
-                    </div>
-                    <div class="mb-4 md:mr-48 mx-4 md:mx-0">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Nome de usuário</label>
-                        <input name="username" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="username" type="text" placeholder="Nome de usuário">
-                        {% if used_username %}
-                        <span class="text-red-600">Usuário já usado</span>
-                        {% endif %}
-                    </div>
-                    <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
-                        <div class="md:mr-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nome jurídico</label>
-                            <input name="nome_juridico" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="name" type="text" placeholder="Nome jurídico">
-                        </div>
-                        <div class="mt-4 md:mt-0">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fantasy-name">Nome fantasia</label>
-                            <input name="nome_fantasia" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="fantasy-name" type="text" placeholder="Nome fantasia">
-                        </div>
-                    </div>
-                    <div class="mb-4 md:mr-48 mx-4 md:mx-0">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="city">Cidade da sede</label>
-                        <input name="city" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="city" type="text" placeholder="Cidade da sede">
-                    </div>
-                    <div class="mb-4 md:mr-48 mx-4 md:mx-0">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="area">Área de atuação</label>
-                        <input name="area" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="area" type="text" placeholder="Área de atuação">
-                    </div>
-                    <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
-                        <div class="md:mr-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Senha</label>
-                            <input name="password" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="password" type="password" placeholder="Senha">
-                        </div>
-                        <div class="mt-4 md:mt-0">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password-repeated">Repetir senha</label>
-                            <input required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="password-repeated" type="password" placeholder="Repetir senha">
-                        </div>
-                    </div>
-                    <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
-                    <div class="mb-4 mx-auto">
-                        <input type="submit" class="bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-5 md:px-8 rounded-full">
-                    </div>
-                </form>
+{% extends "mainpage.html" %}
+
+{% block title %}
+<title>Cadastrar nova empresa</title>
+{% endblock %}
+{% block content %}
+<div class="flex w-full font-sans h-screen justify-center w-full">
+    <div class="flex flex-wrap md:w-2/3 justify-center">
+        <form method="POST" action="{% url 'webapp:empresa:register_page' %}try/"
+              class="bg-white rounded shadow-lg w-5/6 md:w-2/3 md:px-16 my-auto" id="form">
+            {% csrf_token %}
+            <h2 class="text-purple-900 text-center font-semibold mt-2 text-2xl md:text-4xl">Empresa</h2>
+            <hr class="hr-purple">
+            <div class="mb-4 md:mr-48 mx-4 md:mx-0">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">E-mail</label>
+                <input name="email" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="email" type="text" placeholder="E-mail">
+                {% if used_email %}
+                <span class="text-red-600">Email já usado</span>
+                {% endif %}
             </div>
-        </div>
-    </body>
-</html>
+            <div class="mb-4 md:mr-48 mx-4 md:mx-0">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Nome de usuário</label>
+                <input name="username" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="username" type="text" placeholder="Nome de usuário">
+                {% if used_username %}
+                <span class="text-red-600">Usuário já usado</span>
+                {% endif %}
+            </div>
+            <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
+                <div class="md:mr-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nome jurídico</label>
+                    <input name="nome_juridico" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="name" type="text" placeholder="Nome jurídico">
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="fantasy-name">Nome fantasia</label>
+                    <input name="nome_fantasia" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="fantasy-name" type="text" placeholder="Nome fantasia">
+                </div>
+            </div>
+            <div class="mb-4 md:mr-48 mx-4 md:mx-0">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="city">Cidade da sede</label>
+                <input name="city" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="city" type="text" placeholder="Cidade da sede">
+            </div>
+            <div class="mb-4 md:mr-48 mx-4 md:mx-0">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="area">Área de atuação</label>
+                <input name="area" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="area" type="text" placeholder="Área de atuação">
+            </div>
+            <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
+                <div class="md:mr-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Senha</label>
+                    <input name="password" required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="password" type="password" placeholder="Senha">
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password-repeated">Repetir senha</label>
+                    <input required class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-800" id="password-repeated" type="password" placeholder="Repetir senha">
+                </div>
+            </div>
+            <div class="mb-4 flex flex-row flex-wrap mx-4 md:mx-0">
+            <div class="mb-4 mx-auto">
+                <input type="submit" class="bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-5 md:px-8 rounded-full">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

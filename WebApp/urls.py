@@ -5,7 +5,6 @@ from .views import home, login_page, login_attempt, register_page, logout_page
 app_name = 'webapp'
 urlpatterns = [
     path('', home, name='home_page'),
-    path('user/works/', include('Trabalhos.urls', namespace='trabalho')),
     path('login/', login_page, name='login_page'),
     path('login/try/', login_attempt),
     path('logout/', logout_page, name='logout_page'),

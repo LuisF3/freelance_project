@@ -12,16 +12,9 @@ class Trabalho(models.Model):
     descricao = models.TextField()
     requisitos = models.TextField()
 
-    business = models.ForeignKey(EmpresaProfile, on_delete=models.DO_NOTHING)
-    inscritos = models.ManyToManyField(EstudanteProfile, blank=True)
+    business = models.ForeignKey(EmpresaProfile, related_name='trabalho', on_delete=models.DO_NOTHING)
+    inscritos = models.ManyToManyField(EstudanteProfile, related_name='subscribers', blank=True)
+    contratados = models.ManyToManyField(EstudanteProfile, related_name='contratados', blank=True)
 
     def __str__(self):
         return self.titulo + ' '.join(self.descricao.split(maxsplit=10)[:10]) + ' | Valor: ' + str(self.pagamento)
-
-    def details(self):
-        string = (f'Trabalho: {self.titulo}',
-                  f'Periodo: {self.inicio} -> {self.fim}',
-                  f'Pagamento: {self.pagamento}',
-                  f'Descricao: {self.descricao}',
-                  f'Requisitos: {self.requisitos}')
-        return string

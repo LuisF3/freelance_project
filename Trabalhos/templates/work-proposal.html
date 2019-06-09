@@ -1,0 +1,29 @@
+{% load trabalho_extras %}
+{% for proposal in proposals %}
+<!--Proposta-->
+<div class="w-full border border-gray-300 py-6 px-8 text-center md:text-left bg-white">
+    <!--Título da proposta-->
+    <a href="{{ work_detail|addstr:proposal.pk|addstr:'/' }}" class="no-underline md:text-xl font-semibold text-purple-800 hover:text-purple-600">{{ proposal.titulo }}</a>
+    <div class="flex flex-col-reverse md:flex-row-reverse justify-around my-8">
+        <!--Descrição-->
+        <p class="w-full md:w-3/5 text-sm text-gray-700 text-justify">
+            {{ proposal.descricao }}
+        </p>
+        <div class="w-full md:w-auto">
+            <img src="https://mdbootstrap.com/img/Photos/Others/images/90.jpg" alt="logo-empresa" class="rounded-full w-24 h-24 mb-8 md:mb-0 mx-auto">
+        </div>
+    </div>
+    <div class="w-full md:w-auto float-left">
+        <i class="fas fa-money-bill-alt mr-2"></i> <!--https://fontawesome.com/icons/money-bill-alt?style=solid-->
+        <span class="text-sm font-semibold text-gray-800">Pagamento: {{ proposal.pagamento }}</span>
+    </div>
+    <div class="w-full md:w-auto float-right md:mx-4">
+        <i class="fas fa-calendar-times"></i> <!--https://fontawesome.com/icons/calendar-times?style=solid-->
+        <span class="text-sm font-semibold text-gray-800">{{ proposal.inicio }}</span>
+    </div>
+    <div class="w-full md:w-auto float-right md:mx-4">
+        <i class="fas fa-calendar"></i> <!--https://fontawesome.com/icons/calendar?style=solid-->
+        <span class="text-sm font-semibold text-gray-800">{{ proposal.fim }}</span>
+    </div>
+</div>
+{% endfor %}

@@ -1,0 +1,18 @@
+{% extends "mainpage.html" %}
+
+{% block navbar %}
+<!--Navbar-->
+<nav class="w-full overflow-auto bg-purple-900 sticky shadow-md top-0">
+    <ul class="m-0 p-0 list-none leading-3_75">
+        <li class="float-left mb-1 w-full mdw-36">
+            <a class="font-semibold no-underline block text-center text-gray-200 text-lg hover-xl hover:text-white">Novo Trabalho</a>
+        </li>
+        <li class="float-right mb-1 w-full mdw-36">
+            <a href="index.html" class="font-semibold no-underline block text-center text-gray-200 text-lg hover-xl hover:text-white">Sair</a>
+        </li>
+        <li class="float-right mb-1 w-full mdw-36">
+            <span class="font-semibold no-underline block text-center text-gray-200 text-lg hidden md:block">{{ user }}</span>
+        </li>
+    </ul>
+</nav>
+{% endblock %}

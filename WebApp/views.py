@@ -8,13 +8,14 @@ def home(request):
     string = "Home<br>Is user logged?: " + str(request.user.is_authenticated)
 
     if hasattr(request.user, 'empresaprofile'):
-        string += f"<br><a href='{reverse('webapp:trabalho:all_works')}'>Trabalhos publicados</a>"
+        return HttpResponseRedirect(reverse('webapp:empresa:home_page'))
     elif hasattr(request.user, 'estudanteprofile'):
-        string += f"<br><a href='{reverse('webapp:trabalho:all_works')}'>Trabalhos disponíveis</a>"
+        string += f"<br><a href='{reverse('webapp:estudante:trabalho:all_works')}'>Trabalhos disponíveis</a>"
 
     string += f"<br><a href='{reverse('webapp:login_page')}'>Login</a>" if not request.user.is_authenticated \
         else f"<br>{request.user.username}: <a href='{reverse('webapp:logout_page')}'>Logout</a>"
     return HttpResponse(string)
+
 
 
 def register_page(request):

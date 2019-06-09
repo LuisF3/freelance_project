@@ -1,0 +1,30 @@
+{% extends "business-navbar.html" %}
+{% block title %}
+<title>Nome do projeto</title>
+{% endblock %}
+{% block content %}
+<div class="w-full flex flex-wrap justify-center">
+    <!--Dados do usuário-->
+    <div class="w-full md:w-1/5 mb-4 md:mb-0">
+        <img src="https://mdbootstrap.com/img/Photos/Others/images/90.jpg" alt="logo-empresa" class="rounded-full w-40 h-40 mt-8 mb-8 mx-auto">
+        <div class="w-3/4 ml-auto">
+            <span class="font-semibold text-purple-900 text-2xl block">Nome do usuário</span>
+            <span class="text-gray-800 text-sm">{{ user }}</span>
+            <p class="text-gray-900 text-sm my-4 w-5/6 text-justify">
+                {% if user.empresaprofile.description %}
+                    {{ user.empresaprofile.description }}
+                {% else %}
+                    No description.
+                {% endif %}
+            </p>
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-code-branch mr-2"></i>Empresa da área "{{ user.empresaprofile.area }}"</span> <!--https://fontawesome.com/icons/code-branch?style=solid-->
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-map-marker-alt mr-2"></i>Situada em "{{ user.empresaprofile.cidade }}"</span> <!--https://fontawesome.com/icons/map-marker-alt?style=solid-->
+        </div>
+    </div>
+    <!--Lista de trabalhos-->
+    <div class="w-full md:w-2/5 bg-white flex flex-col">
+        {% include "add-work.html" with add_work_link=add_work_link%}
+        {% include "work-proposal.html" with proposals=proposals work_detail=work_detail %}
+    </div>
+</div>
+{% endblock %}

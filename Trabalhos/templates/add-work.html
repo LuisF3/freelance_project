@@ -1,19 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Adicionar trabalho</title>
-</head>
-<body>
-    <h1>Adicionar trabalho</h1>
-    <form action="{% url 'webapp:trabalho:add_work' %}try/" method="post">
-        {% csrf_token %}
-        <input name="titulo" type="text" placeholder="titulo" style="display: block;" required>
-        <input name="inicio" type="datetime-local" placeholder="inicio" style="display: block;" required>
-        <input name="fim" type="datetime-local" placeholder="fim" style="display: block;" required>
-        <input name="pagamento" type="number" placeholder="pagamento" style="display: block;" required>
-        <textarea name="descricao" type="text" placeholder="descricao" style="display: block;" required></textarea>
-        <input name="requisitos" type="text" placeholder="requisto, requisito" style="display: block;" required>
-        <input type="submit"></form>
-</body>
-</html>
+<!--Formulário-->
+<div class="w-full flex justify-center">
+    <div class="bg-white flex flex-col w-full text-center">
+        <h1 class="mt-8 text-xl md:text-3xl text-purple-900 font-semibold">Novo trabalho</h1>
+        <hr class="hr-purple-mini mb-6">
+        <form method="POST" action="{{ add_work_link }}" id="form" class="w-full flex flex-col">
+            {% csrf_token %}
+            <div class="flex flex-col mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="title">Título</label>
+                <input name="titulo" required class="mx-4 md:mx-40 text-center shadow appearance-none border rounded py-2 text-gray-800" id="title" type="text" placeholder="Título">
+            </div>
+            <div class="flex flex-col mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="payment">Pagamento</label>
+                <input name="pagamento" required class="mx-4 md:mx-40 text-center shadow appearance-none border rounded py-2 text-gray-800" id="payment" type="text" placeholder="Pagamento">
+            </div>
+            <div class="flex flex-col mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="description">Descrição</label>
+                <textarea name="descricao" rows="6" cols="60" class="mx-4 md:mx-40 border shadow rounded"></textarea>
+            </div>
+            <div class="flex flex-col mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="requirements">Requisitos</label>
+                <input name="requisitos"  required class="mx-4 md:mx-40 text-center shadow appearance-none border rounded py-2 text-gray-800" id="requirements" type="text" placeholder="Requisitos">
+            </div>
+            <div class="flex mt-4 mb-4 mx-auto">
+                <label class="block text-gray-700 font-bold md:mr-8 text-sm md:text-base" for="start-day">Data de início</label>
+                <input name="inicio" required type="datetime-local" class="border rounded shadow" id="start-day">
+            </div>
+            <div class="flex mt-4 mb-4 mx-auto">
+                <label class="block text-gray-700 font-bold md:mr-8 text-sm md:text-base" for="end-day">Data de término</label>
+                <input name="fim" required type="datetime-local" class="border rounded shadow" id="end-day">
+            </div>
+            <div class="mt-4 mb-8 mx-auto">
+                <input type="submit" class="bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-5 md:px-8 rounded-full">
+            </div>
+        </form>
+    </div>
+</div>

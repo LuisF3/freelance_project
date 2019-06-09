@@ -1,16 +1,27 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.http import Http404, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
+from Trabalhos.models import Trabalho
 from .models import EmpresaProfile
 
 
-# Create your views here.
+def home_page(request):
+    user = request.user
+    user_data = {'user': user, 'add_work_link': reverse('webapp:empresa:add_work'),
+                 'proposals': user.empresaprofile.trabalho.all(),
+                 'work_detail': reverse('webapp:empresa:home_page')}
+
+    return render(request, 'pages/business-mainpage.html', user_data)
+
+
 def register_page(request):
     return render(request, 'pages/business-register-form.html')
 
 
+# Essa função deveria receber a request por javascript
 def register_attempt(request):
     username = request.POST.get('username')
     email = request.POST.get('email')
@@ -34,4 +45,47 @@ def register_attempt(request):
     EmpresaProfile.objects.create(user=new_user, cidade=city,
                                   area=area)
     login(request, new_user)
-    return render(request, 'created-account.html', {'home': '/'})
+    return render(request, 'created-account.html')
+
+
+def add_work(request):
+    titulo = request.POST.get('titulo')
+    inicio = request.POST.get('inicio')
+    fim = request.POST.get('fim')
+    pagamento = request.POST.get('pagamento')
+    descricao = request.POST.get('descricao')
+    requisitos = request.POST.get('requisitos')
+
+    if titulo is None or inicio is None or fim is None or pagamento is None or descricao is None or requisitos is None:
+        raise ValidationError('Algum dos valores é inválido')
+
+    Trabalho.objects.create(business=request.user.empresaprofile, titulo=titulo,
+                            inicio=inicio, fim=fim, pagamento=pagamento,
+                            descricao=descricao, requisitos=requisitos)
+
+    return HttpResponseRedirect(reverse('webapp:home_page'))
+
+
+def work_detail(request, work_pk):
+    trabalho = request.user.empresaprofile.trabalho.get(pk=work_pk)
+    user_data = {'trabalho': trabalho,
+                 'current_page': reverse('webapp:empresa:work_detail', kwargs={'work_pk': work_pk})}
+
+    return render(request, 'pages/business-work-detail.html', user_data)
+
+
+def hire_student(request, work_pk, student_pk):
+    trabalho = request.user.empresaprofile.trabalho.get(pk=work_pk)
+    student = trabalho.inscritos.get(pk=student_pk)
+    trabalho.contratados.add(student)
+    trabalho.inscritos.remove(student)
+
+    return HttpResponseRedirect(reverse('webapp:empresa:work_detail', kwargs={'work_pk': work_pk}))
+
+
+def refuse_student(request, work_pk, student_pk):
+    trabalho = request.user.empresaprofile.trabalho.get(pk=work_pk)
+    student = trabalho.inscritos.get(pk=student_pk)
+    trabalho.inscritos.remove(student)
+
+    return HttpResponseRedirect(reverse('webapp:empresa:work_detail', kwargs={'work_pk': work_pk}))

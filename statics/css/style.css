@@ -1,0 +1,70 @@
+.bg-login{
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/images/90.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.header-student{
+   background-color: #000000;
+   background-image: url('https://images3.alphacoders.com/739/thumb-1920-739456.png'); 
+   background-position: 100% 100%;
+   background-repeat: no-repeat;
+}
+
+.hr-gray{
+    color:#CBD5E0;
+    background-color:#CBD5E0;
+    height: 2px;
+}
+
+.hr-purple{
+    color:#5C497A;
+    background-color:#5C497A;
+    height: 4px;
+    width: 15%;
+}
+
+.hr-purple-mini{
+    color:#5C497A;
+    background-color:#5C497A;
+    height: 4px;
+    width: 7%;
+}
+
+.leading-3_75{
+    line-height: 3.75rem;
+}
+
+.hover-xl:hover{
+    font-size: 1.25rem;
+}
+
+.p-0-1{
+    padding: 0 1rem;
+}
+
+.rounded-l{
+    border-radius: 1.25rem 0 0 1.25rem;
+}
+
+.rounded-r{
+    border-radius: 0 1.25rem 1.25rem 0;
+}
+
+.left-n-0_5{
+    left: -0.5rem;
+}
+
+.w-36{
+    width: 9rem;
+}
+
+@media (min-width: 768px){
+    .mdw-36{
+        width: 9rem !important; 
+    }
+}
+
+.red {
+    color:red;
+}

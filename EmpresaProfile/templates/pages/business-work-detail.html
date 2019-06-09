@@ -1,0 +1,7 @@
+{% extends 'business-navbar.html' %}
+{% block title %}
+<title>{{ trabalho.titulo }}</title>
+{% endblock %}
+{% block content %}
+{% include 'work-details.html' with trabalho=trabalho %}
+{% endblock %}
