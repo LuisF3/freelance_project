@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
@@ -8,6 +9,7 @@ from Trabalhos.models import Trabalho
 from .models import EmpresaProfile
 
 
+@login_required
 def home_page(request):
     user = request.user
     user_data = {'user': user, 'add_work_link': reverse('webapp:empresa:add_work'),
@@ -21,7 +23,6 @@ def register_page(request):
     return render(request, 'pages/business-register-form.html')
 
 
-# Essa função deveria receber a request por javascript
 def register_attempt(request):
     username = request.POST.get('username')
     email = request.POST.get('email')
@@ -48,6 +49,7 @@ def register_attempt(request):
     return render(request, 'created-account.html')
 
 
+@login_required
 def add_work(request):
     titulo = request.POST.get('titulo')
     inicio = request.POST.get('inicio')
@@ -66,6 +68,7 @@ def add_work(request):
     return HttpResponseRedirect(reverse('webapp:home_page'))
 
 
+@login_required
 def work_detail(request, work_pk):
     trabalho = request.user.empresaprofile.trabalho.get(pk=work_pk)
     user_data = {'trabalho': trabalho,
@@ -74,6 +77,7 @@ def work_detail(request, work_pk):
     return render(request, 'pages/business-work-detail.html', user_data)
 
 
+@login_required
 def hire_student(request, work_pk, student_pk):
     trabalho = request.user.empresaprofile.trabalho.get(pk=work_pk)
     student = trabalho.inscritos.get(pk=student_pk)
@@ -83,6 +87,7 @@ def hire_student(request, work_pk, student_pk):
     return HttpResponseRedirect(reverse('webapp:empresa:work_detail', kwargs={'work_pk': work_pk}))
 
 
+@login_required
 def refuse_student(request, work_pk, student_pk):
     trabalho = request.user.empresaprofile.trabalho.get(pk=work_pk)
     student = trabalho.inscritos.get(pk=student_pk)

@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
@@ -9,6 +10,7 @@ from Trabalhos.models import Trabalho
 from .models import EstudanteProfile
 
 
+@login_required
 def home_page(request):
     user = request.user
     user_data = {'user': user,'proposals': Trabalho.objects.all(),
@@ -17,6 +19,7 @@ def home_page(request):
     return render(request, 'pages/student-mainpage.html', user_data)
 
 
+@login_required
 def work_detail(request, work_pk):
     trabalho = Trabalho.objects.get(pk=work_pk)
     user_data = {'trabalho': trabalho,
@@ -25,6 +28,7 @@ def work_detail(request, work_pk):
     return render(request, 'pages/student-work-detail.html', user_data)
 
 
+@login_required
 def subscribed_works(request):
     user = request.user
     subscribed_works = [work for work in user.estudanteprofile.subscribers.all()]
@@ -69,12 +73,14 @@ def register_attempt(request):
     return render(request, 'created-account.html')
 
 
+@login_required
 def subscribe(request, work_pk):
     trabalho = Trabalho.objects.get(pk=work_pk)
     trabalho.inscritos.add(request.user.estudanteprofile)
     return HttpResponseRedirect(reverse('webapp:estudante:work_detail', kwargs={'work_pk': work_pk}))
 
 
+@login_required
 def unsubscribe(request, work_pk):
     trabalho = Trabalho.objects.get(pk=work_pk)
     trabalho.inscritos.remove(request.user.estudanteprofile)
