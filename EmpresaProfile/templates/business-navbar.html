@@ -5,7 +5,10 @@
 <nav class="w-full overflow-auto bg-purple-900 sticky shadow-md top-0">
     <ul class="m-0 p-0 list-none leading-3_75">
         <li class="float-left mb-1 w-full mdw-36">
-            <a class="font-semibold no-underline block text-center text-gray-200 text-lg hover-xl hover:text-white">Novo Trabalho</a>
+            <a href="{% url 'webapp:empresa:home_page' %}" class="font-semibold no-underline block text-center text-gray-200 text-lg hover-xl hover:text-white">Início</a href="{% url 'webapp:empresa:home_page' %}">
+        </li>
+        <li class="float-left mb-1 w-full mdw-36">
+            <button onclick="show_newWork_menu()" class="font-semibold no-underline block text-center text-gray-200 text-lg hover-xl hover:text-white">Novo Trabalho</button>
         </li>
         <li class="float-right mb-1 w-full mdw-36">
             <a href="{% url 'webapp:logout_page' %}" class="font-semibold no-underline block text-center text-gray-200 text-lg hover-xl hover:text-white">Sair</a>

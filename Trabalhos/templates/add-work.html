@@ -1,5 +1,5 @@
 <!--Formulário-->
-<div class="w-full flex justify-center">
+<div class="w-full flex justify-center hidden" id="newWork_menu">
     <div class="bg-white flex flex-col w-full text-center">
         <h1 class="mt-8 text-xl md:text-3xl text-purple-900 font-semibold">Novo trabalho</h1>
         <hr class="hr-purple-mini mb-6">
@@ -11,7 +11,7 @@
             </div>
             <div class="flex flex-col mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="payment">Pagamento</label>
-                <input name="pagamento" required class="mx-4 md:mx-40 text-center shadow appearance-none border rounded py-2 text-gray-800" id="payment" type="text" placeholder="Pagamento">
+                <input name="pagamento" type="number" required class="mx-4 md:mx-40 text-center shadow appearance-none border rounded py-2 text-gray-800" id="payment" type="text" placeholder="Pagamento">
             </div>
             <div class="flex flex-col mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="description">Descrição</label>

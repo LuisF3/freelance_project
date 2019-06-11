@@ -24,3 +24,11 @@ function validar_data(){
     if(document.getElementById("start-day").value >= document.getElementById("end-day").value)
         document.getElementById("start-day").setCustomValidity('O data inicial deve ser inferior à data de término.');
 }
+
+function show_newWork_menu() {
+    let newWork_menu = document.getElementById("newWork_menu");
+    if (newWork_menu.classList.contains("hidden"))
+        newWork_menu.classList.remove("hidden");
+    else
+        newWork_menu.classList.add("hidden");
+}

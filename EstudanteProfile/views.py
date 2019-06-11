@@ -13,6 +13,7 @@ from .models import EstudanteProfile
 @login_required
 def home_page(request):
     user = request.user
+    print(user.estudanteprofile.universidade)
     user_data = {'user': user,'proposals': Trabalho.objects.all(),
                  'work_detail': reverse('webapp:estudante:home_page')}
 

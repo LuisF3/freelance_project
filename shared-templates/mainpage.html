@@ -19,6 +19,10 @@
 <body class="bg-gray-200 font-sans">
     {% block navbar %}{% endblock %}
     {% block content %}{% endblock %}
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+    <script src="{% static 'scripts/student.js' %}"></script>
+    <script src="{% static 'scripts/business.js' %}"></script>
+    <script src="{% static 'scripts/work.js' %}"></script>
+    {% endblock %}
 </body>
 </html>
