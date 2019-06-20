@@ -1,53 +1,42 @@
 {% extends "webapp-navbar.html" %}
 {% load staticfiles %}
 {% block content %}
-<div class="flex flex-col justify-center w-full h-screen bg-login">
-    <div class="bg-purple-900">
-    </div>
-    <div class="flex flex-col md:flex-row md:justify-around mb-4 pt-8">
-        <div class="w-4/5 md:w-1/5 flex flex-col justify-center bg-white p-16 rounded-full border-8 border-purple-900">
-            <div class="flex justify-center">
-                <i class="fas fa-tv fa-9x text-purple-900"></i>
-            </div>
-            <div class="flex flex-col my-4">
-                <h2 class="font-semibold text-purple-900  text-center text-xl mb-4">Descrição 1</h2>
+    <div class="flex flex-col lg:flex-row justify-around lg:h-screen bg-login">
+        <div class="m-5 lg:w-1/5 lg:my-auto flex flex-col justify-center text-center text-purple-900 bg-white lg:p-6 xl:p-12 rounded-full border-8 border-purple-900">
+            <i class="fas fa-tv fa-9x"></i>
+            <div class="flex flex-col">
+                <h2 class="font-semibold text-xl my-4">Descrição 1</h2>
                 <span class="text-justify">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis reprehenderit repellat
                     molestias exercitationem nemo pariatur deserunt nisi culpa.
                 </span>
             </div>
         </div>
-        <div class="w-4/5 md:w-1/5 flex flex-col justify-center bg-purple-900 p-16 rounded-full border-8 border-white">
-            <div class="flex justify-center">
-                <i class="fas text-white fa-map-marker-alt fa-9x"></i>
-            </div>
-            <div class="flex flex-col my-4">
-                <h2 class="font-semibold text-white text-center text-xl mb-4">Descrição 2</h2>
-                <span class="text-white text-justify">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis reprehenderit repellat
-                    molestias exercitationem nemo pariatur deserunt nisi culpa.
-                </span>
-            </div>
-        </div>
-        <div class="w-4/5 md:w-1/5 flex flex-col justify-center bg-white p-16 rounded-full border-8 border-purple-900">
-            <div class="flex justify-center">
-                <i class="fas fa-search fa-9x text-purple-900"></i>
-            </div>
-            <div class="flex flex-col my-4">
-                <h2 class="font-semibold text-purple-900 text-center text-xl mb-4">Descrição 3</h2>
+        <div class="m-5 lg:w-1/5 lg:my-auto flex flex-col justify-center text-center text-white bg-purple-900 lg:p-6 xl:p-12 rounded-full border-8 border-white">
+            <i class="fas fa-map-marker-alt fa-9x"></i>
+            <div class="flex flex-col">
+                <h2 class="font-semibold text-white text-xl my-4">Descrição 2</h2>
                 <span class="text-justify">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis reprehenderit repellat
                     molestias exercitationem nemo pariatur deserunt nisi culpa.
                 </span>
             </div>
         </div>
-        <div class="w-4/5 md:w-1/5 flex flex-col justify-center bg-purple-900 p-16 rounded-full border-8 border-white">
-            <div class="flex justify-center">
-                <i class="fas fa-chart-pie fa-9x text-white"></i>
+        <div class="m-5 lg:w-1/5 lg:my-auto flex flex-col justify-center text-center text-purple-900 bg-white lg:p-6 xl:p-12 rounded-full border-8 border-purple-900">
+            <i class="fas fa-search fa-9x"></i>
+            <div class="flex flex-col">
+                <h2 class="font-semibold text-purple-900 text-xl my-4">Descrição 3</h2>
+                <span class="text-justify">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis reprehenderit repellat
+                    molestias exercitationem nemo pariatur deserunt nisi culpa.
+                </span>
             </div>
-            <div class="flex flex-col my-4">
-                <h2 class="font-semibold text-white text-center text-xl mb-4">Descrição 4</h2>
-                <span class="text-white text-justify">
+        </div>
+        <div class="m-5 lg:w-1/5 lg:my-auto flex flex-col justify-center text-center text-white bg-purple-900 lg:p-6 xl:p-12 rounded-full border-8 border-white">
+                <i class="fas fa-chart-pie fa-9x"></i>
+            <div class="flex flex-col">
+                <h2 class="font-semibold text-white text-center text-xl my-4">Descrição 4</h2>
+                <span class="text-justify">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis reprehenderit repellat
                     molestias exercitationem nemo pariatur deserunt nisi culpa.
                 </span>

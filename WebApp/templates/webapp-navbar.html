@@ -2,12 +2,12 @@
 {% block navbar %}
 <!--Navbar-->
 <nav class="sticky top-0 line-height-4x flex justify-between bg-purple-900 shadow-lg">
-    <div class="pl-10">
-            <a href="{% url 'webapp:home_page' %}" class="font-semibold text-white text-lg hover:underline">Início</a>
+    <div>
+        <a href="{% url 'webapp:home_page' %}" class="font-semibold text-white text-lg hover:underline pl-10">Início</a>
     </div>
     <div class="flex justify-between">
-        <a href="{% url 'webapp:register_page' %}" class="font-semibold text-white text-lg hover:underline px-10">Cadastrar</a>
-        <a href="{% url 'webapp:login_page' %}" class="font-semibold text-white text-lg hover:underline px-10">Logar</a>
+        <a href="{% url 'webapp:register_page' %}" class="font-semibold text-white text-lg hover:underline pr-10">Cadastrar</a>
+        <a href="{% url 'webapp:login_page' %}" class="font-semibold text-white text-lg hover:underline pr-10">Logar</a>
     </div>
 </nav>
 {% endblock %}
