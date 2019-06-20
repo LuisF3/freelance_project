@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
 {% load trabalho_extras %}
-<div class="w-full flex flex-wrap justify-center bg-gray-100">
+<div class="w-full flex flex-wrap justify-center">
     <!--Dados do usuário-->
     <div class="w-full md:w-1/5 mb-4 md:mb-0 mr-4">
         <img src="https://mdbootstrap.com/img/Photos/Others/images/90.jpg" alt="logo-empresa" class="rounded-full w-40 h-40 mt-8 mb-8 mx-auto">
@@ -14,9 +14,8 @@
             <p class="text-gray-900 text-sm my-4 w-5/6 text-justify">
                 {{ user.descricao }}
             </p>
-            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-graduation-cap mr-2"></i>Estudante no(a) {{ user.universidade }}</span>                  <!--https://fontawesome.com/icons/graduation-cap?style=solid-->
-            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-book mr-2"></i>Cursa {{ user.curso }}</span> <!--https://fontawesome.com/icons/book?style=solid-->
-            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-users mr-2"></i>Membro de algum grupo</span>                      <!--https://fontawesome.com/icons/users?style=solid-->
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-graduation-cap mr-2"></i>Estudante no(a) {{ user.estudanteprofile.universidade }}</span>                  <!--https://fontawesome.com/icons/graduation-cap?style=solid-->
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-book mr-2"></i>Cursa {{ user.estudanteprofile.curso }}</span> <!--https://fontawesome.com/icons/book?style=solid-->
         </div>
     </div>
     <!--Descrição do trabalho-->
@@ -27,7 +26,11 @@
             <h2 class="text-gray-900 font-semibold mb-2">Projeto desenvolvido pela Empresa {{ trabalho.business.user.first_name }} ({{ trabalho.business.user }})</h2>
             <h2 class="text-lg md:text-xl text-purple-800 font-semibold mb-2">Descrição</h2>
             <p class="text-gray-900 text-justify mb-4">
-                {{ trabalho.business.descricao }}
+                {% if trabalho.business.descricao %}
+                    {{ trabalho.business.descricao }}
+                {% else %}
+                    Sem descrição.
+                {% endif %}
             </p>
             <h2 class="text-lg md:text-xl text-purple-800 font-semibold mb-2">Requisitos</h2>
             <p class="text-gray-900 text-justify mb-4">

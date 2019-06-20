@@ -22,8 +22,8 @@
                     <hr class="hr-gray mb-4">
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-2" for="email">E-mail</label>
-                    <input name="username" class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-700" id="email" type="text" placeholder="E-mail" required>
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-2" for="email">Nome de usuário</label>
+                    <input name="username" class="shadow appearance-none border rounded w-full py-2 px-5 text-gray-700" id="email" type="text" placeholder="Nome de usuário" required>
                 </div>
                 {% if not wrong_credentials %}
                 <div class="mb-6">
@@ -41,9 +41,6 @@
                 <div class="flex items-center justify-center mb-4">
                     <input type="submit" class="bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded-full mr-2" value="Entrar">
                     <a href="{% url 'webapp:register_page' %}" class="bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-4 rounded-full ml-2">Cadastrar</a>
-                </div>
-                <div class="text-center mb-4">
-                    <a class="font-bold text-sm text-purple-700 hover:text-purple-900" href="notfound.html">Esqueceu a senha?</a>
                 </div>
                 <p class="text-center text-gray-600 text-xs">&copy;2019 Grupo 24 SCC-504</p>
             </form>

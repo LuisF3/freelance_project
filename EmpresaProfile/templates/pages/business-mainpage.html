@@ -22,11 +22,8 @@
         </div>
     </div>
     <!--Lista de trabalhos-->
-    <div class="w-full md:w-2/5 bg-white flex flex-col">
-        <button class="w-1/3 bg-purple-700 mx-auto text-center hover:bg-purple-900 text-white font-bold py-3 mt-5 rounded-full toggle">Novo Trabalho</button>
-        <div class="toggle-item">
-            {% include "add-work.html" with add_work_link=add_work_link%}
-        </div>
+    <div class="w-full md:w-2/5 flex flex-col">
+        {% include "add-work.html" with add_work_link=add_work_link%}
         {% include "work-proposal.html" with proposals=proposals work_detail=work_detail %}
     </div>
 </div>

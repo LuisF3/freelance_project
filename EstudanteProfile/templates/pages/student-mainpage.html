@@ -17,13 +17,12 @@
                     No description.
                 {% endif %}
             </p>
-            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-graduation-cap mr-2"></i>Estudante no(a) {{ user.universidade }}</span>                  <!--https://fontawesome.com/icons/graduation-cap?style=solid-->
-            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-book mr-2"></i>Cursa {{ user.curso }}</span> <!--https://fontawesome.com/icons/book?style=solid-->
-            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-users mr-2"></i>Membro de algum grupo</span> <!--https://fontawesome.com/icons/users?style=solid-->
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-graduation-cap mr-2"></i>Estudante do(a) {{ user.estudanteprofile.universidade }}</span>                  <!--https://fontawesome.com/icons/graduation-cap?style=solid-->
+            <span class="text-gray-700 text-sm mb-2 block"><i class="fas fa-book mr-2"></i>Cursa {{ user.estudanteprofile.curso }}</span> <!--https://fontawesome.com/icons/book?style=solid-->
         </div>
     </div>
     <!--Lista de trabalhos-->
-    <div class="w-full md:w-2/5 bg-white flex flex-col">
+    <div class="w-full md:w-2/5 flex flex-col">
         {% include "work-proposal.html" with proposals=proposals work_detail=work_detail %}
     </div>
 </div>
