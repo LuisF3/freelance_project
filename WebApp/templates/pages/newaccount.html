@@ -1,10 +1,10 @@
 {% extends "webapp-navbar.html" %}
 {% block content %}
 {% load staticfiles %}
-<div class="flex flex-1 flex-row flex-wrap font-sans h-screen w-full bg-login">
+<div class="flex flex-wrap font-sans lg:h-screen bg-login">
     <!--Estudante-->
-    <div class="flex flex-wrap h-screen md:w-1/2">
-        <div class="mx-auto my-auto w-1/2">
+    <div class="flex flex-wrap lg:w-1/2 mb-10 lg:mb-0">
+        <div class="mx-auto my-auto w-10/12 lg:w-2/3">
             <div class="bg-white overflow-hidden rounded-lg shadow-md">
                 <img alt="student-profile" class="block h-auto w-full" src="{% static 'assets/student-profile.jpg' %}">
                 <div class="flex flex-col p-2 md:p-4 text-center">
@@ -22,8 +22,8 @@
         </div>
     </div>
     <!--Empresa-->
-    <div class="flex flex-wrap h-screen md:w-1/2">
-        <div class="mx-auto my-auto w-1/2">
+    <div class="flex flex-wrap lg:w-1/2 mb-10 lg:mb-0">
+        <div class="mx-auto my-auto w-10/12 lg:w-2/3">
             <div class="bg-white overflow-hidden rounded-lg shadow-md">
                 <img alt="company-profile" class="block h-auto w-full" src="{% static 'assets/company-profile.jpg' %}">
                 <div class="flex flex-col p-2 md:p-4 text-center">
