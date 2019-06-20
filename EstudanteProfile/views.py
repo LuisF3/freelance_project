@@ -1,8 +1,8 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -12,8 +12,11 @@ from .models import EstudanteProfile
 
 @login_required
 def home_page(request):
+    if not hasattr(request.user, 'estudanteprofile'):
+        raise Http404
+
     user = request.user
-    user_data = {'user': user,'proposals': Trabalho.objects.all(),
+    user_data = {'user': user,'proposals': Trabalho.objects.filter(private=False),
                  'work_detail': reverse('webapp:estudante:home_page')}
 
     return render(request, 'pages/student-mainpage.html', user_data)
@@ -21,6 +24,9 @@ def home_page(request):
 
 @login_required
 def work_detail(request, work_pk):
+    if not hasattr(request.user, 'estudanteprofile'):
+        raise Http404
+
     trabalho = Trabalho.objects.get(pk=work_pk)
     user_data = {'trabalho': trabalho,
                  'current_page': reverse('webapp:estudante:work_detail', kwargs={'work_pk': work_pk})}
@@ -30,6 +36,9 @@ def work_detail(request, work_pk):
 
 @login_required
 def subscribed_works(request):
+    if not hasattr(request.user, 'estudanteprofile'):
+        raise Http404
+
     user = request.user
     subscribed_works = [work for work in user.estudanteprofile.subscribers.all()]
     subscribed_works += [work for work in user.estudanteprofile.contratados.all()]
@@ -65,7 +74,7 @@ def register_attempt(request):
         return render(request, "pages/student-register-form.html", {'used_username': check_username,
                                                                     'used_email': check_email})
 
-    new_user = User.objects.create_user(username=username, password=password, email=email,
+    new_user = User.objects.create_user(username='@' + username, password=password, email=email,
                                         first_name=first_name, last_name=last_name)
     EstudanteProfile.objects.create(user=new_user, universidade=universidade,
                                     curso=curso, previsao_de_formatura=int(previsao_formatura))
@@ -75,6 +84,9 @@ def register_attempt(request):
 
 @login_required
 def subscribe(request, work_pk):
+    if not hasattr(request.user, 'estudanteprofile'):
+        raise Http404
+
     trabalho = Trabalho.objects.get(pk=work_pk)
     trabalho.inscritos.add(request.user.estudanteprofile)
     return HttpResponseRedirect(reverse('webapp:estudante:work_detail', kwargs={'work_pk': work_pk}))
@@ -82,6 +94,9 @@ def subscribe(request, work_pk):
 
 @login_required
 def unsubscribe(request, work_pk):
+    if not hasattr(request.user, 'estudanteprofile'):
+        raise Http404
+
     trabalho = Trabalho.objects.get(pk=work_pk)
     trabalho.inscritos.remove(request.user.estudanteprofile)
     trabalho.contratados.remove(request.user.estudanteprofile)

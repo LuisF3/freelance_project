@@ -7,10 +7,9 @@
     {% block styles %}
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/style2.css" %}">
+    <link rel="stylesheet" href="{% static "fontawesome-free-5.9.0-web/css/all.min.css" %}">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-          rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-          crossorigin="anonymous">
     {% endblock %}
     {% block title %}
     <title>Freelance project</title>
@@ -19,6 +18,9 @@
 <body class="bg-gray-200 font-sans">
     {% block navbar %}{% endblock %}
     {% block content %}{% endblock %}
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="{% static "scripts/javascript.js" %}"></script>
+    {% endblock %}
 </body>
 </html>

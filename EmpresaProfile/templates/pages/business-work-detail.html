@@ -8,6 +8,13 @@
 <div class="w-full flex flex-wrap justify-center mt-8">
     <div class="w-4/5 md:w-1/2 flex flex-col">
         <h1 class="text-center text-xl md:text-3xl text-purple-800 font-semibold">{{ trabalho.titulo }}</h1>
+        <h2 class="text-center text-purple-800">O trabalho atual está
+        {% if trabalho.private %}
+            <span class="text-red-500">PRIVADO</span>
+        {% else %}
+            <span class="text-green-500">PÚBLICO</span>
+        {% endif %}
+        </h2>
         <hr class="hr-purple-mini mb-12">
         <h2 class="text-lg md:text-xl text-purple-900 font-semibold mb-2">Descrição</h2>
         <p class="text-gray-900 text-justify mb-4">
@@ -32,25 +39,45 @@
                 <span class="text-gray-900">{{ trabalho.fim }}</span>
             </li>
         </ul>
+        <hr>
         <h2 class="text-lg md:text-xl text-purple-900 font-semibold mb-2">Estudantes separados</h2>
         <ul class="mb-8">
             {% for contratado in trabalho.contratados.all %}
-            <li class="mb-1">
-                <span class="font-semibold text-gray-900">Estudante {{ forloop.counter }}</span>
-                <span class="text-gray-900 text-sm">{{ contratado.user }}</span>
+            <li class="mb-1 flex justify-between">
+                <div>
+                    <span class="font-semibold text-gray-900">Estudante {{ forloop.counter }}:  </span>
+                    <a href="{% url 'webapp:profile_page' username=contratado.user %}" class="text-gray-900 hover:underline">{{ contratado.user }}</a>
+                </div>
+                <form method="post" action="{{ current_page|addstr:'fire-'|addstr:contratado.pk|addstr:'/' }}">
+                    {% csrf_token %}
+                    <button type="submit" class="text-gray-900 text-sm hover:underline">Remover</button>
+                </form>
             </li>
             {% endfor %}
         </ul>
         <div class="flex mb-12 justify-center">
-            <button type="submit" class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full ml-2">Tornar privado</button>
-            <button type="submit" class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full ml-2">Deletar projeto</button>
+            <form method="post" action="{{ current_page|addstr:'control_private/' }}">
+                {% csrf_token %}
+                <button type="submit" class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full ml-2">
+                    <span>Tornar</span>
+                    {% if trabalho.private %}
+                        <span class="text-green-500">PÚBLICO</span>
+                    {% else %}
+                        <span class="text-red-500">PRIVADO</span>
+                    {% endif %}
+                </button>
+            </form>
+            <form method="post" action="{{ current_page|addstr:'delete/' }}">
+                {% csrf_token %}
+                <button type="submit" class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full ml-2">Deletar projeto</button>
+            </form>
         </div>
         <h2 class="text-lg md:text-2xl text-center text-purple-900 font-semibold mb-4">Lista dos candidatos</h2>
         {% for subscriber in trabalho.inscritos.all %}
         <!--Candidato-->
         <div class="w-full border border-gray-300 shadow-md py-6 px-8 text-center md:text-left bg-white mb-8">
             <!--Nome do candidato-->
-            <a href="#" class="no-underline md:text-xl font-semibold text-purple-800 hover:text-purple-600">{{ subscriber.user.first_name }} ({{ subscriber.user }})</a>
+            <a href="{% url 'webapp:profile_page' username=subscriber.user %}" class="no-underline md:text-xl font-semibold text-purple-800 hover:text-purple-600">{{ subscriber.user.first_name }} ({{ subscriber.user }})</a>
             <div class="flex flex-col-reverse md:flex-row-reverse justify-around my-8">
                 <!--Descrição-->
                 <p class="w-full md:w-3/5 text-sm text-gray-800 text-justify">
@@ -72,11 +99,11 @@
             </div>
             <form class="w-full md:w-auto float-right md:mx-4">
                 {% csrf_token %}
-                <button type="submit" formmethod="post" formaction="{{ current_page|addstr:'refuse/'|addstr:subscriber.pk|addstr:'/' }}" class="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full ml-2 mt-4 md:mt-0">Recusar</button>
+                <button type="submit" formmethod="post" formaction="{{ current_page|addstr:'refuse-'|addstr:subscriber.pk|addstr:'/' }}" class="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full ml-2 mt-4 md:mt-0">Recusar</button>
             </form>
             <form class="w-full md:w-auto float-right md:mx-4">
                 {% csrf_token %}
-                <button type="submit" formmethod="post" formaction="{{ current_page|addstr:'hire/'|addstr:subscriber.pk|addstr:'/' }}" class="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full ml-2 mt-4 md:mt-0">Contratar</button>
+                <button type="submit" formmethod="post" formaction="{{ current_page|addstr:'hire-'|addstr:subscriber.pk|addstr:'/' }}" class="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full ml-2 mt-4 md:mt-0">Contratar</button>
             </form>
         </div>
         {% endfor %}

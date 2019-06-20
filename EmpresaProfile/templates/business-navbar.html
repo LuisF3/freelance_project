@@ -2,17 +2,21 @@
 
 {% block navbar %}
 <!--Navbar-->
-<nav class="w-full overflow-auto bg-purple-900 sticky shadow-md top-0">
-    <ul class="m-0 p-0 list-none leading-3_75">
-        <li class="float-left mb-1 w-full mdw-36">
-            <a class="font-semibold no-underline block text-center text-gray-200 text-lg hover-xl hover:text-white">Novo Trabalho</a>
-        </li>
-        <li class="float-right mb-1 w-full mdw-36">
-            <a href="{% url 'webapp:logout_page' %}" class="font-semibold no-underline block text-center text-gray-200 text-lg hover-xl hover:text-white">Sair</a>
-        </li>
-        <li class="float-right mb-1 w-full mdw-36">
-            <span class="font-semibold no-underline block text-center text-gray-200 text-lg hidden md:block">{{ user }}</span>
-        </li>
+<nav class="sticky top-0 line-height-4x">
+    <ul class="flex justify-between bg-purple-900 shadow-lg">
+        <div class="pl-10">
+            <li>
+                <a href="{% url 'webapp:empresa:home_page' %}" class="font-semibold text-white text-lg hover:underline">Início</a>
+            </li>
+        </div>
+        <div class="flex justify-between pr-10">
+            <li class="pr-10">
+                <a href="{% url 'webapp:empresa:account_information' %}" class="font-semibold text-white text-lg hover:underline">{{ user }}</a>
+            </li>
+            <li>
+                <a href="{% url 'webapp:logout_page' %}" class="font-semibold text-white text-lg hover:underline">Sair</a>
+            </li>
+        </div>
     </ul>
 </nav>
 {% endblock %}

@@ -11,6 +11,7 @@ class Trabalho(models.Model):
     pagamento = models.FloatField()
     descricao = models.TextField()
     requisitos = models.TextField()
+    private = models.BooleanField(default=True)
 
     business = models.ForeignKey(EmpresaProfile, related_name='trabalho', on_delete=models.DO_NOTHING)
     inscritos = models.ManyToManyField(EstudanteProfile, related_name='subscribers', blank=True)

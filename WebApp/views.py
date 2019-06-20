@@ -31,8 +31,11 @@ def login_page(request):
 def login_attempt(request):
     if request.method != 'POST':
         raise Http404("Page not found")
-    username = request.POST['username']
-    password = request.POST['password']
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+
+    if username[0] is not '@':
+        username = '@' + username
 
     user = authenticate(username=username, password=password)
 
