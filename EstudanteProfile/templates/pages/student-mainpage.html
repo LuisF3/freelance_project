@@ -11,8 +11,8 @@
             <span class="font-semibold text-purple-900 text-2xl block">Nome do usuário</span>
             <span class="text-gray-800 text-sm">{{ user }}</span>
             <p class="text-gray-900 text-sm my-4 w-5/6 text-justify">
-                {% if user.empresaprofile.description %}
-                    {{ user.empresaprofile.description }}
+                {% if user.estudanteprofile.descricao %}
+                    {{ user.estudanteprofile.descricao }}
                 {% else %}
                     No description.
                 {% endif %}

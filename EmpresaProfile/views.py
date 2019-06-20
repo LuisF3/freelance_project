@@ -35,6 +35,9 @@ def register_attempt(request):
     area = request.POST.get('area')
     password = request.POST.get('password')
 
+    if username and username[0] != '@':
+        username = '@' + username
+
     if username is None or email is None or first_name is None or last_name is None \
             or cidade is None or area is None or password is None:
         raise ValidationError('Algum dos valores é inválido')
@@ -44,7 +47,7 @@ def register_attempt(request):
     if check_username is True or check_email is True:
         return render(request, "pages/business-register-form.html", {'used_username': check_username,
                                                                      'used_email': check_email})
-    new_user = User.objects.create_user(username='@' + username, password=password, email=email,
+    new_user = User.objects.create_user(username=username, password=password, email=email,
                                         first_name=first_name, last_name=last_name)
     EmpresaProfile.objects.create(user=new_user, cidade=cidade,
                                   area=area)

@@ -28,6 +28,9 @@ def work_detail(request, work_pk):
         raise Http404
 
     trabalho = Trabalho.objects.get(pk=work_pk)
+    print(trabalho)
+    print(trabalho.business)
+    print(trabalho.business.description)
     user_data = {'trabalho': trabalho,
                  'current_page': reverse('webapp:estudante:work_detail', kwargs={'work_pk': work_pk})}
 
@@ -62,7 +65,9 @@ def register_attempt(request):
     curso = request.POST.get('curso')
     previsao_formatura = request.POST.get('formatura', 0)
     password = request.POST.get('password')
-    print(username, email, first_name, last_name, universidade, curso, previsao_formatura, password)
+
+    if username and username[0] != '@':
+        username = '@' + username
 
     if username is None or email is None or first_name is None or last_name is None \
             or universidade is None or curso is None or password is None:
@@ -74,7 +79,7 @@ def register_attempt(request):
         return render(request, "pages/student-register-form.html", {'used_username': check_username,
                                                                     'used_email': check_email})
 
-    new_user = User.objects.create_user(username='@' + username, password=password, email=email,
+    new_user = User.objects.create_user(username=username, password=password, email=email,
                                         first_name=first_name, last_name=last_name)
     EstudanteProfile.objects.create(user=new_user, universidade=universidade,
                                     curso=curso, previsao_de_formatura=int(previsao_formatura))

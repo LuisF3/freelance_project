@@ -36,7 +36,7 @@
             <!--Descrição-->
             <div class="flex flex-col mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="description">Descrição</label>
-                <textarea name="descricao" value="{{ user.empresaprofile.description }}" rows="6" cols="60" name="description" class="mx-4 md:mx-40 border shadow rounded"></textarea>
+                <textarea name="descricao" rows="6" cols="60" name="description" class="mx-4 md:mx-40 border shadow rounded">{{ user.empresaprofile.description }}  </textarea>
             </div>
             <div class="mt-4 mb-8 mx-auto">
                 {% if successfully_modified %}

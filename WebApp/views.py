@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 
@@ -53,9 +53,8 @@ def logout_page(request):
 
 
 def profile_page(request, username):
-    user = User.objects.get(username=username)
+    user = get_object_or_404(User, username=username)
     extends = ''
-    print(request.user)
     if request.user.is_anonymous:
         extends = 'webapp-navbar.html'
     else:

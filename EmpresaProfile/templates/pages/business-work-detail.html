@@ -45,8 +45,8 @@
             {% for contratado in trabalho.contratados.all %}
             <li class="mb-1 flex justify-between">
                 <div>
-                    <span class="font-semibold text-gray-900">Estudante {{ forloop.counter }}:  </span>
-                    <a href="{% url 'webapp:profile_page' username=contratado.user %}" class="text-gray-900 hover:underline">{{ contratado.user }}</a>
+                    <a href="{% url 'webapp:profile_page' username=contratado.user %}" class="font-semibold text-gray-900 hover:underline">{{ forloop.counter }}) {{ contratado.user }}: </a>
+                    <span class="text-gray-900">{{ contratado.user.email }}</span>
                 </div>
                 <form method="post" action="{{ current_page|addstr:'fire-'|addstr:contratado.pk|addstr:'/' }}">
                     {% csrf_token %}
