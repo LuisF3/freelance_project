@@ -13,12 +13,3 @@ document.getElementById("ano-2").setAttribute("value", "" + (data.getFullYear() 
 document.getElementById("ano-3").setAttribute("value", "" + (data.getFullYear() + 3));
 document.getElementById("ano-4").setAttribute("value", "" + (data.getFullYear() + 4));
 document.getElementById("ano-5").setAttribute("value", "" + (data.getFullYear() + 5));
-
-//Validar a senha
-function validar(){
-    let senha = document.getElementById("password").value;
-    let senhaRepetida = document.getElementById("password-repeated").value;
-
-    if(senha != "" && senhaRepetida != "" && senha === senhaRepetida) location.href="createdaccount.html";
-    else alert('Senhas diferentes!');
-}
