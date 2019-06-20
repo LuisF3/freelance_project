@@ -5,8 +5,8 @@
 {% block content %}
 {% load trabalho_extras %}
 <!--Dados do trabalho-->
-<div class="w-full flex flex-wrap justify-center mt-8">
-    <div class="w-4/5 md:w-1/2 flex flex-col">
+<div class="w-full flex flex-wrap justify-center h-screen py-8 bg-login">
+    <div class="w-4/5 xl:w-2/5 flex flex-col bg-white p-8 rounded-lg border-4 border-purple-900">
         <h1 class="text-center text-xl md:text-3xl text-purple-800 font-semibold">{{ trabalho.titulo }}</h1>
         <h2 class="text-center text-purple-800">O trabalho atual está
         {% if trabalho.private %}
