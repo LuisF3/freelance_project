@@ -162,7 +162,6 @@ def account_information_update(request):
 
     user.first_name = request.POST.get('first_name')
     user.last_name = request.POST.get('last_name')
-    print(request.POST.get('cidade'))
     user.empresaprofile.cidade = request.POST.get('cidade')
     user.empresaprofile.area = request.POST.get('area')
     user.empresaprofile.description = request.POST.get('descricao')

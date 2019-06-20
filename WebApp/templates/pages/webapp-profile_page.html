@@ -1,4 +1,4 @@
-{% extends 'mainpage.html' %}
+{% extends extends %}
 {% block title %}
 <title>{{ user.user.username }}</title>
 {% endblock %}
@@ -11,44 +11,52 @@
         </div>
     </header>
     <div class="ml-auto md:ml-0 w-1/2 mt-2 flex flex-col">
-        <span class="float-right font-semibold text-blue-600 text-xl md:text-3xl">Nome do usuário</span>
-        <span class="text-gray-700 text-lg font-semibold">{{ user }}</span>
+        <span class="float-right font-semibold text-blue-600 text-xl md:text-3xl">{{ user.first_name }} {{ user.last_name }}</span>
+        <span class="text-gray-700 text-lg font-semibold">({{ user }})</span>
     </div>
     <div class="w-5/6 md:w-2/3 mt-16 flex flex-col shadow-lg bg-white">
         <h2 class="text-2xl md:text-4xl font-semibold text-blue-600 text-center mb-8 pt-2">Perfil</h2>
         <div class="w-full flex justify-center mb-8">
             <div class="w-4/5 md:w-3/5 flex flex-col">
+                {% if isStudent %}
                 <h3 class="text-xl md:text-2xl font-semibold text-blue-600 mb-2">Descrição</h3>
                 <p class="text-gray-800 text-justify mb-4">
-                    {{ user.descricao }}
+                    {% if user.estudanteprofile.descricao %}
+                        {{ user.estudanteprofile.descricao }}
+                    {% else %}
+                        No description
+                    {% endif %}
                 </p>
-                {% if isStudent %}
                 <h3 class="text-xl md:text-2xl font-semibold text-blue-600 mb-2">Informações acadêmicas</h3>
                 <div class="flex flex-wrap">
                     <span class="text-gray-900 mr-2 font-semibold">Universidade:</span>
-                    <span class="text-sm md:text-base text-gray-800">{{ user.universidade }}</span>
+                    <span class="text-sm md:text-base text-gray-800">{{ user.estudanteprofile.universidade }}</span>
                 </div>
                 <div class="flex flex-wrap">
                     <span class="text-gray-900 mr-2 font-semibold">Curso:</span>
-                    <span class="text-sm md:text-base text-gray-800">{{ user.curso }}</span>
-                </div>
-                <div class="flex flex-wrap">
-                    <span class="text-gray-900 mr-2 font-semibold">Membro do grupo:</span>
-                    <span class="text-sm md:text-base text-gray-800">POO</span>
+                    <span class="text-sm md:text-base text-gray-800">{{ user.estudanteprofile.curso }}</span>
                 </div>
                 <div class="flex flex-wrap">
                     <span class="text-gray-900 mr-2 font-semibold">Ano de formatura:</span>
-                    <span class="text-sm md:text-base text-gray-800">{{ user.previsao_formatura }}</span>
+                    <span class="text-sm md:text-base text-gray-800">{{ user.estudanteprofile.previsao_formatura }}</span>
                 </div>
                 {% else %}
+                <h3 class="text-xl md:text-2xl font-semibold text-blue-600 mb-2">Descrição</h3>
+                <p class="text-gray-800 text-justify mb-4">
+                    {% if user.empresaprofile.description %}
+                        {{ user.empresaprofile.description}}
+                    {% else %}
+                        No description
+                    {% endif %}
+                </p>
                 <h3 class="text-xl md:text-2xl font-semibold text-blue-600 mb-2">Informações adicionais</h3>
                 <div class="flex flex-wrap">
                     <span class="text-gray-900 mr-2 font-semibold">Cidade:</span>
-                    <span class="text-sm md:text-base text-gray-800">{{ user.cidade }}</span>
+                    <span class="text-sm md:text-base text-gray-800">{{ user.empresaprofile.cidade }}</span>
                 </div>
                 <div class="flex flex-wrap">
                     <span class="text-gray-900 mr-2 font-semibold">Área de atuação:</span>
-                    <span class="text-sm md:text-base text-gray-800">{{ user.area }}</span>
+                    <span class="text-sm md:text-base text-gray-800">{{ user.empresaprofile.area }}</span>
                 </div>
                 {% endif %}
             </div>

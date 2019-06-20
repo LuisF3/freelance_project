@@ -16,16 +16,16 @@ def home(request):
 
     string += f"<br><a href='{reverse('webapp:login_page')}'>Login</a>" if not request.user.is_authenticated \
         else f"<br>{request.user.username}: <a href='{reverse('webapp:logout_page')}'>Logout</a>"
-    return HttpResponse(string)
+    return render(request, 'pages/home.html', {})
 
 
 def register_page(request):
-    return render(request, 'newaccount.html', {'url_empresa': reverse('webapp:empresa:register_page'),
+    return render(request, 'pages/newaccount.html', {'url_empresa': reverse('webapp:empresa:register_page'),
                                                'url_estudante': reverse('webapp:estudante:register_page')})
 
 
 def login_page(request):
-    return render(request, 'login.html')
+    return render(request, 'pages/login.html')
 
 
 def login_attempt(request):
@@ -54,6 +54,16 @@ def logout_page(request):
 
 def profile_page(request, username):
     user = User.objects.get(username=username)
-    user = user.estudanteprofile if hasattr(user, 'estudanteprofile') else user.empresaprofile
+    extends = ''
+    print(request.user)
+    if request.user.is_anonymous:
+        extends = 'webapp-navbar.html'
+    else:
+        if hasattr(request.user, 'estudanteprofile'):
+            extends = 'student-navbar.html'
+        elif hasattr(request.user, 'empresaprofile'):
+            extends = 'business-navbar.html'
 
-    return render(request, 'webapp-profile_page.html', {'user': user, 'isStudent': hasattr(user, 'estudanteprofile')})
+    return render(request, 'pages/webapp-profile_page.html', {'user': user,
+                                                              'isStudent': hasattr(user, 'estudanteprofile'),
+                                                              'extends': extends})

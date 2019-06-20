@@ -1,0 +1,64 @@
+{% extends "student-navbar.html" %}
+{% block title %}
+<title>Informações da conta</title>
+{% endblock %}
+{% block content %}
+<!--Formulário-->
+<div class="w-full flex justify-center">
+    <div class="bg-white flex flex-col w-4/5 md:w-3/5 h-full text-center">
+        <!--Título do formulário-->
+        <h1 class="mt-8 text-xl md:text-3xl text-purple-900 font-semibold">Atualizar dados</h1>
+        <hr class="hr-purple-mini mb-6">
+        <!--Conteúdo do formulário-->
+        <form method="post" action="{% url 'webapp:estudante:account_information_update' %}" id="form" class="w-full flex flex-col">
+            {% csrf_token %}
+            <!--Nome do estudante-->
+            <div class="flex flex-row mb-4 justify-center flex-wrap">
+               <div class="flex flex-col mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="name">Nome</label>
+                    <input name="first_name" value="{{ user.first_name }}" required class="md:px-12 mx-4 text-center shadow appearance-none border rounded py-2 text-gray-800" id="name" type="text" placeholder="">
+                </div>
+                <div class="flex flex-col mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="surname">Sobrenome</label>
+                    <input name="last_name" value="{{ user.last_name }}" required class="md:px-12 mx-4 text-center shadow appearance-none border rounded py-2 text-gray-800" id="surname" type="text" placeholder="">
+                </div>
+            </div>
+            <!--Universidade-->
+            <div class="flex flex-col mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="university">Universidade</label>
+                <input name="universidade" value="{{ user.estudanteprofile.universidade }}" required class="mx-4 md:mx-40 lg:mx-64 text-center shadow appearance-none border rounded py-2 text-gray-800" id="university" type="text" placeholder="">
+            </div>
+            <!--Curso-->
+            <div class="flex flex-col mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="course">Curso</label>
+                <input name="curso" value="{{ user.estudanteprofile.curso }}" required class="mx-4 md:mx-40 lg:mx-64 text-center shadow appearance-none border rounded py-2 text-gray-800" id="course" type="text" placeholder="">
+            </div>
+            <!--Ano de término do curso-->
+            <div class="mt-4 md:mt-0 mx-auto mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="year">Ano de conclusão</label>
+                <select name="previsao" method="get" action="#" class="shadow appearance-none border rounded w-full py-2 px-16 text-gray-800" id="year">
+                    <option id="ano-null" disabled selected>Selecione</option>
+                    <option id="ano-0"></option>
+                    <option id="ano-1"></option>
+                    <option id="ano-2"></option>
+                    <option id="ano-3"></option>
+                    <option id="ano-4"></option>
+                    <option id="ano-5"></option>
+                </select>
+            </div>
+            <!--Descrição-->
+            <div class="flex flex-col mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="description">Descrição</label>
+                <textarea name="descricao" value="{{ user.estudanteprofile.descricao }}"  rows="6" cols="60" name="description" class="mx-4 md:mx-40 border shadow rounded"></textarea>
+            </div>
+            <div class="mt-4 mb-8 mx-auto">
+                {% if successfully_modified %}
+                <span class="text-green-500">Modificado com sucesso!</span>
+                <br>
+                {% endif %}
+                <input type="submit" class="bg-purple-700 hover:bg-purple-900 text-white font-bold py-2 px-5 md:px-8 rounded-full">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

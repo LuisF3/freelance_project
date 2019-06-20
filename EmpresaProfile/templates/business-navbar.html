@@ -2,21 +2,13 @@
 
 {% block navbar %}
 <!--Navbar-->
-<nav class="sticky top-0 line-height-4x">
-    <ul class="flex justify-between bg-purple-900 shadow-lg">
-        <div class="pl-10">
-            <li>
-                <a href="{% url 'webapp:empresa:home_page' %}" class="font-semibold text-white text-lg hover:underline">Início</a>
-            </li>
-        </div>
-        <div class="flex justify-between pr-10">
-            <li class="pr-10">
-                <a href="{% url 'webapp:empresa:account_information' %}" class="font-semibold text-white text-lg hover:underline">{{ user }}</a>
-            </li>
-            <li>
-                <a href="{% url 'webapp:logout_page' %}" class="font-semibold text-white text-lg hover:underline">Sair</a>
-            </li>
-        </div>
-    </ul>
+<nav class="sticky top-0 line-height-4x flex justify-between bg-purple-900 shadow-lg">
+    <div class="pl-10">
+            <a href="{% url 'webapp:empresa:home_page' %}" class="font-semibold text-white text-lg hover:underline">Início</a>
+    </div>
+    <div class="flex justify-between">
+        <a href="{% url 'webapp:empresa:account_information' %}" class="font-semibold text-white text-lg hover:underline px-10">{{ user }}</a>
+        <a href="{% url 'webapp:logout_page' %}" class="font-semibold text-white text-lg hover:underline px-10">Sair</a>
+    </div>
 </nav>
 {% endblock %}

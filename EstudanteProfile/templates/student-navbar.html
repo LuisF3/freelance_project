@@ -1,25 +1,19 @@
 {% extends "mainpage.html" %}
-
 {% block navbar %}
 <!--Navbar-->
-<nav class="w-full overflow-auto bg-white fixed shadow-md sticky top-0">
-    <ul class="m-0 p-0 list-none leading-3_75">
-        <li class="float-left w-full mdw-36 text-center">
-            <a href="{% url 'webapp:estudante:home_page' %}" class="font-semibold w-24 no-underline block text-purple-800 text-lg hover-xl hover:text-purple-600 w-full">Início</a>
-        </li>
-        <li class="float-left w-full mdw-36 text-center">
-            <a href="{% url 'webapp:estudante:subscribed_works' %}" class="font-semibold w-24 no-underline block text-purple-800 text-lg hover-xl hover:text-purple-600 w-full">Trabalhos inscritos</a>
-        </li>
-        <li class="float-right w-full mdw-36 text-center">
-            <a href="{% url 'webapp:logout_page' %}" class="font-semibold w-24 no-underline block text-purple-800 text-lg hover-xl hover:text-purple-600 w-full">Sair</a>
-        </li>
-        <li class="float-right w-full mdw-36 text-center">
-            <span class="font-semibold no-underline block text-purple-800 text-lg">{{ user }}</span>
-        </li>
-    </ul>
-    <form class="hidden md:block float-right m-4 mr-16">
-        <input type="text" name="" placeholder="Procurar trabalho..." class="w-64 border-none outline-none bg-gray-100 p-0-1 rounded-l h-8">
-        <input type="submit" value="Pesquisar" class="border-none outline-none w-24 h-8 rounded-r bg-purple-800 hover:bg-purple-600 text-white font-semibold relative left-n-0_5">
-    </form>
+<nav class="sticky top-0 line-height-4x flex justify-between bg-white shadow-lg">
+    <div class="">
+        <a href="{% url 'webapp:estudante:home_page' %}" class="font-semibold text-purple-900 text-lg hover:underline px-10">Início</a>
+        <a href="{% url 'webapp:estudante:subscribed_works' %}" class="font-semibold text-purple-900 text-lg hover:underline px-10">Trabalhos inscritos</a>
+    </div>
+    <div class="flex justify-between">
+        <form method="get" action="{% url 'webapp:estudante:search_work' %}" class="flex my-auto px-10" style="line-height: 2rem;">
+            {% csrf_token %}
+            <input name='key' type="text" name="" placeholder="Procurar trabalho" class="w-64 border-none outline-none bg-gray-100 p-0-1 rounded-l h-8">
+            <input type="submit" value="Pesquisar" class="rounded-r bg-purple-800 hover:bg-purple-600 text-white font-semibold px-5 py-0">
+        </form>
+        <a href="{% url 'webapp:estudante:account_information' %}" class="font-semibold text-purple-900 text-lg hover:underline px-10">{{ user }}</a>
+        <a href="{% url 'webapp:logout_page' %}" class="font-semibold text-purple-900 text-lg hover:underline px-10">Sair</a>
+    </div>
 </nav>
 {% endblock %}

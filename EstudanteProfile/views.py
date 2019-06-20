@@ -101,3 +101,43 @@ def unsubscribe(request, work_pk):
     trabalho.inscritos.remove(request.user.estudanteprofile)
     trabalho.contratados.remove(request.user.estudanteprofile)
     return HttpResponseRedirect(reverse('webapp:estudante:work_detail', kwargs={'work_pk': work_pk}))
+
+
+@login_required
+def account_information(request):
+    if not hasattr(request.user, 'estudanteprofile'):
+        raise Http404
+
+    return render(request, 'pages/student-account-information.html')
+
+
+@login_required
+def account_information_update(request):
+    if not hasattr(request.user, 'estudanteprofile'):
+        raise Http404
+
+    user = request.user
+
+    user.first_name = request.POST.get('first_name')
+    user.last_name = request.POST.get('last_name')
+    user.estudanteprofile.universidade = request.POST.get('universidade')
+    user.estudanteprofile.curso = request.POST.get('curso')
+    user.estudanteprofile.descricao = request.POST.get('descricao')
+
+    user.save()
+    user.estudanteprofile.save()
+
+    return render(request, 'pages/student-account-information.html', {'successfully_modified': True})
+
+
+@login_required
+def search_works(request):
+    if not hasattr(request.user, 'estudanteprofile'):
+        raise Http404
+
+    key = request.GET.get('key')
+    user = request.user
+    user_data = {'user': user,'proposals': Trabalho.objects.filter(private=False, titulo__contains=key),
+                 'work_detail': reverse('webapp:estudante:home_page')}
+
+    return render(request, 'pages/student-mainpage.html', user_data)

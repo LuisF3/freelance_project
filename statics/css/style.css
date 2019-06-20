@@ -59,12 +59,12 @@
     width: 9rem;
 }
 
-@media (min-width: 768px){
-    .mdw-36{
-        width: 9rem !important; 
-    }
+.h-half{
+    height: 50%;
 }
 
-.red {
-    color:red;
+@media (min-width: 768px){
+    .mdw-36{
+        width: 9rem !important;
+    }
 }
