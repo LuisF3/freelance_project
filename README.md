@@ -7,19 +7,12 @@
 <ol>
   <li>Set up and activate an virtual env:
     <ul>
-      <li>"$ python3 -m venv venvname"</li>
-      <li>"$ source /pathtoyourvenv/bin/activate"</li>
+      <li>"$ python3 -m venv venv" with this, your are setting the name of your venv to "venv"</li>
+      <li>"$ source venv/bin/activate"</li>
     </ul>
     Now, your venvname should appear inside parenthesis at the beggining of your command line
   </li>
-  <li>Install some dependencies:
-    <ul>
-      <li>"$ pip3 install Django"</li>
-      <li>"$ pip3 install python-decouple"</li>
-      <li>"$ pip3 install dj-database-url"</li>
-      <li>"$ pip3 install dj-static"</li>
-    </ul>
+  <li>Install the dependencies on requirements-dev.txt. You may need to update your pip to 19.0.3 in order for it to install correctly. You may do it with "$ pip3 install -U pip3". All dependencies must be installed with pip3 (python 3.6.x+). The requirements-dev.txt may be installed with "$ pip3 install -r requirements-dev.txt".
   </li>
-  <li>Check if debug is True at freelance_project/freelance/settings.py, if not, set it to True</li>
-  <li>Run these commands: "$ python3 manage.py makemigrations" then "$ python3 manage.py migrate" then "$ python3 manage.py runserver"<br>Now, the terminal should tell you where the local server was setted up (here it is localhost:8000/)</li>
+  <li>Run these commands: "$ python3 manage.py makemigrations" then "$ python3 manage.py migrate" then "$ python3 manage.py runserver"<br>Now, the terminal should tell you where the local server was setted up (localhost:8000/ by default)</li>
 </ol>
