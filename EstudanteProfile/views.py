@@ -18,9 +18,6 @@ def home_page(request):
     user = request.user
     user_data = {'user': user, 'proposals': Trabalho.objects.filter(private=False),
                  'work_detail': reverse('webapp:estudante:home_page')}
-
-    print(user.estudanteprofile.profile_pic)
-
     return render(request, 'pages/student-mainpage.html', user_data)
 
 
@@ -30,9 +27,6 @@ def work_detail(request, work_pk):
         raise Http404
 
     trabalho = Trabalho.objects.get(pk=work_pk)
-    print(trabalho)
-    print(trabalho.business)
-    print(trabalho.business.description)
     user_data = {'trabalho': trabalho,
                  'current_page': reverse('webapp:estudante:work_detail', kwargs={'work_pk': work_pk})}
 
