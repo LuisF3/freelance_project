@@ -64,5 +64,4 @@ def profile_page(request, username):
             extends = 'business-navbar.html'
 
     return render(request, 'pages/webapp-profile_page.html', {'user': user,
-                                                              'isStudent': hasattr(user, 'estudanteprofile'),
                                                               'extends': extends})

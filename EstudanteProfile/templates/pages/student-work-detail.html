@@ -7,7 +7,7 @@
 <div class="w-full flex flex-wrap justify-center">
     <!--Dados do usuário-->
     <div class="w-full md:w-1/5 md:mb-0 mr-4">
-        <img src="https://mdbootstrap.com/img/Photos/Others/images/90.jpg" alt="logo-empresa" class="rounded-full w-40 h-40 mt-8 mb-8 mx-auto">
+        <img src="{{ user.estudanteprofile.profile_pic.url }}" alt="foto estudante" class="rounded-full w-40 h-40 mt-8 mb-8 mx-auto">
         <div class="w-3/4 ml-auto">
             <span class="font-semibold text-purple-900 text-2xl block">Nome do usuário</span>
             <span class="text-gray-800 text-sm">{{ user }}</span>
