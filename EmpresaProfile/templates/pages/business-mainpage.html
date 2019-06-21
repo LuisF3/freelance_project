@@ -8,7 +8,7 @@
     <div class="w-full md:w-1/5 mb-4 md:mb-0">
         <img src="{{ user.empresaprofile.profile_pic.url }}" alt="imagem de perfil" class="rounded-full w-40 h-40 mt-8 mb-8 mx-auto">
         <div class="w-3/4 ml-auto">
-            <span class="font-semibold text-purple-900 text-2xl block">Nome do usuário</span>
+            <span class="font-semibold text-purple-900 text-2xl block">{{ user.first_name }} {{ user.last_name }}</span>
             <span class="text-gray-800 text-sm">{{ user }}</span>
             <p class="text-gray-900 text-sm my-4 w-5/6 text-justify">
                 {% if user.empresaprofile.description %}

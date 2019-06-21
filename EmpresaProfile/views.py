@@ -1,3 +1,4 @@
+import magic
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -249,7 +250,8 @@ def account_information_update(request):
     user.empresaprofile.area = request.POST.get('area')
     user.empresaprofile.description = request.POST.get('descricao')
 
-    if request.FILES.get('profile_pic') is not None:
+    if request.FILES.get('profile_pic') is not None \
+            and magic.from_buffer(request.FILES.get('profile_pic').read(), mime=True).startswith('image/'):
         user.empresaprofile.profile_pic.save(name=user.username + '_pic', content=request.FILES.get('profile_pic'))
 
     user.save()
