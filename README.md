@@ -12,7 +12,27 @@
     </ul>
     Now, your venvname should appear inside parenthesis at the beggining of your command line
   </li>
-  <li>Install the dependencies on requirements-dev.txt. You may need to update your pip to 19.0.3 in order for it to install correctly. You may do it with "$ pip3 install -U pip3". All dependencies must be installed with pip3 (python 3.6.x+). The requirements-dev.txt may be installed with "$ pip3 install -r requirements-dev.txt".
+  <li>Install the dependencies on requirements-dev.txt with:
+    <ul>
+      <li>"$ pip3 install -r requirements-dev.txt"</li>
+    </ul>
+    You may need to update your pip to 19.0.3 in order for it to install correctly. You may do it with:
+    <ul>
+      <li>"$ pip3 install -U pip3" or something similar</li>
+    </ul>
+    All dependencies must be installed with pip3 (python 3.6.x+).
   </li>
-  <li>Run these commands: "$ python3 manage.py makemigrations" then "$ python3 manage.py migrate" then "$ python3 manage.py runserver"<br>Now, the terminal should tell you where the local server was setted up (localhost:8000/ by default)</li>
+  <li>Run these commands:
+    <ul>
+      <li>"$ python3 manage.py makemigrations"</li>
+      <li>"$ python3 manage.py migrate"</li>
+      <li>"$ python3 manage.py runserver"</li>
+    </ul>
+    Now, the terminal should tell you where the local server was setted up (localhost:8000/ by default). 
+    If you get any trouble with css, images, javascript or any other static file, try running:
+    <ul>
+      <li> "$ python3 manage.py collectstatic" </li>
+    </ul>
+    These kind of problem is caused because Django uses different approaches to handle static files in development and deployment servers. It should work if the tutorial was followed correctly.
+  </li>  
 </ol>
