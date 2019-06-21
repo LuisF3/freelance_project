@@ -40,7 +40,7 @@ def login_attempt(request):
     user = authenticate(username=username, password=password)
 
     if user is None:
-        return render(request, 'login.html', {'wrong_credentials': True})
+        return render(request, 'pages/login.html', {'wrong_credentials': True})
 
     login(request, user)
     return HttpResponseRedirect(reverse('webapp:home_page'))

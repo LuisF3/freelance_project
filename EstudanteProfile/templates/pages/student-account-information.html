@@ -10,7 +10,7 @@
         <h1 class="mt-8 text-xl md:text-3xl text-purple-900 font-semibold">Atualizar dados</h1>
         <hr class="hr-purple-mini mb-6">
         <!--Conteúdo do formulário-->
-        <form method="post" action="{% url 'webapp:estudante:account_information_update' %}" id="form" class="w-full flex flex-col">
+        <form method="post" action="{% url 'webapp:estudante:account_information_update' %}" enctype="multipart/form-data" id="form" class="w-full flex flex-col">
             {% csrf_token %}
             <!--Nome do estudante-->
             <div class="flex flex-row mb-4 justify-center flex-wrap">
@@ -50,6 +50,10 @@
             <div class="flex flex-col mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="description">Descrição</label>
                 <textarea name="descricao" rows="6" cols="60" name="description" class="mx-4 md:mx-40 border shadow rounded">{{ user.estudanteprofile.descricao }}</textarea>
+            </div>
+            <div class="mb-4">
+                <label>Foto de perfil:</label>
+                <input name='profile_pic' type="file">
             </div>
             <div class="mt-4 mb-8 mx-auto">
                 {% if successfully_modified %}

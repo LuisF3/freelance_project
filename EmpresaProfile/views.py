@@ -169,6 +169,9 @@ def account_information_update(request):
     user.empresaprofile.area = request.POST.get('area')
     user.empresaprofile.description = request.POST.get('descricao')
 
+    if request.FILES.get('profile_pic') is not None:
+        user.empresaprofile.profile_pic.save(name=user.username + '_pic', content=request.FILES.get('profile_pic'))
+
     user.save()
     user.empresaprofile.save()
 

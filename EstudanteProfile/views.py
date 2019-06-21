@@ -16,8 +16,10 @@ def home_page(request):
         raise Http404
 
     user = request.user
-    user_data = {'user': user,'proposals': Trabalho.objects.filter(private=False),
+    user_data = {'user': user, 'proposals': Trabalho.objects.filter(private=False),
                  'work_detail': reverse('webapp:estudante:home_page')}
+
+    print(user.estudanteprofile.profile_pic)
 
     return render(request, 'pages/student-mainpage.html', user_data)
 
@@ -113,7 +115,7 @@ def account_information(request):
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
-    return render(request, 'pages/student-account-information.html')
+    return render(request, 'pages/student-account-information.html', {'user': request.user})
 
 
 @login_required
@@ -128,6 +130,9 @@ def account_information_update(request):
     user.estudanteprofile.universidade = request.POST.get('universidade')
     user.estudanteprofile.curso = request.POST.get('curso')
     user.estudanteprofile.descricao = request.POST.get('descricao')
+
+    if request.FILES.get('profile_pic') is not None:
+        user.estudanteprofile.profile_pic.save(name=user.username + '_pic', content=request.FILES.get('profile_pic'))
 
     user.save()
     user.estudanteprofile.save()
