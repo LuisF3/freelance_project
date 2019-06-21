@@ -133,7 +133,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticsrepo/"),
+    os.path.join(BASE_DIR, "statics"),
 ]
 
 LOGIN_URL = '/login/'
