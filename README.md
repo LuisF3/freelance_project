@@ -18,7 +18,11 @@
     </ul>
     You may need to update your pip to 19.0.3 in order for it to install correctly. You may do it with:
     <ul>
-      <li>"$ pip3 install -U pip3" or something similar</li>
+      <li>"$ pip install -U pip" or something similar (We want to update pip3)</li>
+    </ul>
+    With the command above you may get an warning "Cache entry deserialization failed, entry ignored". Don't know what it is and why it happens, but it seems it can be fixed by, instead of using pip to upgrade itself, updating it by this link/command:
+    <ul>
+      <li>"$ curl https://bootstrap.pypa.io/get-pip.py | python3" </li>
     </ul>
     All dependencies must be installed with pip3 (python 3.6.x+).
   </li>
@@ -33,6 +37,6 @@
     <ul>
       <li> "$ python3 manage.py collectstatic" </li>
     </ul>
-    These kind of problem is caused because Django uses different approaches to handle static files in development and deployment servers. It should work if the tutorial was followed correctly.
+    These kind of problem is caused because Django uses different approaches to handle static files in development and deployment servers and, since we are using both (the project is beeing served in freel-project.herokuapp.com), it gets confusing sometimes. Anyway, it should work if the tutorial was followed correctly.
   </li>  
 </ol>
