@@ -2,6 +2,9 @@ from django.urls import path, include
 from .views import home, login_page, login_attempt, register_page, logout_page, profile_page
 
 
+# urls de responsabilidade do app WebApp. app_name é uma referência
+# para encontrar as urls mais facilmente.
+
 app_name = 'webapp'
 urlpatterns = [
     path('', home, name='home_page'),

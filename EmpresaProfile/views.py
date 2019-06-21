@@ -11,6 +11,12 @@ from .models import EmpresaProfile
 
 @login_required
 def home_page(request):
+    """
+    Renderiza o html da mainpage
+    :param request:
+    :return: renderização do html
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -23,10 +29,22 @@ def home_page(request):
 
 
 def register_page(request):
+    """
+    rendereiza o form de cadastro
+    :param request:
+    :return:
+    """
+
     return render(request, 'pages/business-register-form.html')
 
 
 def register_attempt(request):
+    """
+    Tenta criar uma nova empresa
+    :param request:
+    :return: página de criado com sucesso ou erro de validação ou erro de usuário já existente
+    """
+
     username = request.POST.get('username')
     email = request.POST.get('email')
     first_name = request.POST.get('nome_fantasia')
@@ -57,6 +75,11 @@ def register_attempt(request):
 
 @login_required
 def add_work(request):
+    """
+    Cria um trabalho
+    :param request:
+    :return: Retorna para a pagina inicial
+    """
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -79,6 +102,13 @@ def add_work(request):
 
 @login_required
 def work_detail(request, work_pk):
+    """
+    Renderiza a página de detalhe de um trabalho
+    :param request:
+    :param work_pk: trabalho em questão
+    :return:
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -91,6 +121,14 @@ def work_detail(request, work_pk):
 
 @login_required
 def hire_student(request, work_pk, student_pk):
+    """
+    Separa um estudante
+    :param request:
+    :param work_pk: trabalho em questão
+    :param student_pk: estudante em questão
+    :return:
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -104,6 +142,14 @@ def hire_student(request, work_pk, student_pk):
 
 @login_required
 def refuse_student(request, work_pk, student_pk):
+    """
+    Recusa um estudante
+    :param request:
+    :param work_pk: trabalho em questão
+    :param student_pk: estudante em questão
+    :return:
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -116,6 +162,14 @@ def refuse_student(request, work_pk, student_pk):
 
 @login_required
 def fire_student(request, work_pk, student_pk):
+    """
+    Retira um estudante dos separados
+    :param request:
+    :param work_pk: trabalho em questão
+    :param student_pk: estudante em questão
+    :return:
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -129,6 +183,13 @@ def fire_student(request, work_pk, student_pk):
 
 @login_required
 def work_delete(request, work_pk):
+    """
+    Delete um trabalho
+    :param request:
+    :param work_pk: trabalho em questão
+    :return:
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -139,6 +200,13 @@ def work_delete(request, work_pk):
 
 @login_required
 def private_control(request, work_pk):
+    """
+    Torna um trabalho público em privado e vice-versa
+    :param request:
+    :param work_pk: trabalho em questão
+    :return:
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -150,6 +218,12 @@ def private_control(request, work_pk):
 
 @login_required
 def account_information(request):
+    """
+    Renderiza a página de atualizar informações da empresa
+    :param request:
+    :return:
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 
@@ -158,6 +232,12 @@ def account_information(request):
 
 @login_required
 def account_information_update(request):
+    """
+    Atualiza as informações da empresa
+    :param request:
+    :return:
+    """
+
     if not hasattr(request.user, 'empresaprofile'):
         raise Http404
 

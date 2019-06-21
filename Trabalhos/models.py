@@ -5,6 +5,10 @@ from EstudanteProfile.models import EstudanteProfile
 
 # Create your models here.
 class Trabalho(models.Model):
+    """
+    Objeto representante de um trabalho
+    """
+
     titulo = models.CharField(max_length=50)
     inicio = models.DateTimeField()
     fim = models.DateTimeField()

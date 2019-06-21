@@ -5,6 +5,10 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class EstudanteProfile(models.Model):
+    """
+    Objeto representante de um estudante
+    """
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     universidade = models.CharField(max_length=10, blank=True)
     curso = models.CharField(max_length=50, blank=True)

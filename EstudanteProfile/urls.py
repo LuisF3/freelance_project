@@ -3,6 +3,9 @@ from .views import home_page, register_page, register_attempt, work_detail, subs
     account_information, account_information_update, search_works
 
 
+# urls de responsabilidade do app EstudanteProfile. app_name é uma referência
+# para encontrar as urls mais facilmente
+
 app_name = 'estudante'
 urlpatterns = [
     path('', home_page, name='home_page'),

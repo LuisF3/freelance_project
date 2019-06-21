@@ -12,6 +12,11 @@ from .models import EstudanteProfile
 
 @login_required
 def home_page(request):
+    """
+    Renderiza o html da mainpage
+    :param request:
+    :return: renderização do html
+    """
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
@@ -23,6 +28,13 @@ def home_page(request):
 
 @login_required
 def work_detail(request, work_pk):
+    """
+    Renderiza a página de detalhe de um trabalho
+    :param request:
+    :param work_pk: trabalho em questão
+    :return:
+    """
+
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
@@ -35,6 +47,12 @@ def work_detail(request, work_pk):
 
 @login_required
 def subscribed_works(request):
+    """
+    Lista todos os trabalhos os quais um estudante está inscrito
+    :param request:
+    :return:
+    """
+
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
@@ -49,10 +67,22 @@ def subscribed_works(request):
 
 
 def register_page(request):
+    """
+    rendereiza o form de cadastro
+    :param request:
+    :return:
+    """
+
     return render(request, 'pages/student-register-form.html')
 
 
 def register_attempt(request):
+    """
+    Tenta criar uma nova empresa
+    :param request:
+    :return: página de criado com sucesso ou erro de validação ou erro de usuário já existente
+    """
+
     username = request.POST.get('username')
     email = request.POST.get('email')
     first_name = request.POST.get('first_name')
@@ -85,6 +115,12 @@ def register_attempt(request):
 
 @login_required
 def subscribe(request, work_pk):
+    """
+    Inscreve um estudante para um trabalho
+    :param request:
+    :return:
+    """
+
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
@@ -95,6 +131,12 @@ def subscribe(request, work_pk):
 
 @login_required
 def unsubscribe(request, work_pk):
+    """
+    Desinscreve um estudante de um trabalho
+    :param request:
+    :return:
+    """
+
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
@@ -106,6 +148,12 @@ def unsubscribe(request, work_pk):
 
 @login_required
 def account_information(request):
+    """
+    Renderiza a página de atualizar informações do estudante
+    :param request:
+    :return:
+    """
+
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
@@ -114,6 +162,12 @@ def account_information(request):
 
 @login_required
 def account_information_update(request):
+    """
+    Atualiza as informações do estudante
+    :param request:
+    :return:
+    """
+
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
@@ -136,6 +190,12 @@ def account_information_update(request):
 
 @login_required
 def search_works(request):
+    """
+    Busca um trabalho pelo titulo e o lista
+    :param request:
+    :return:
+    """
+
     if not hasattr(request.user, 'estudanteprofile'):
         raise Http404
 
