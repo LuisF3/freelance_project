@@ -24,7 +24,7 @@
     <ul>
       <li>"$ curl https://bootstrap.pypa.io/get-pip.py | python3" </li>
     </ul>
-    All dependencies must be installed with pip3 (python 3.6.x+).
+    All dependencies must be installed with pip3 (python 3.6.x+). If anything above goes wrong I strongly recommend you to delete your venv/ folder and start again.  
   </li>
   <li>Run these commands:
     <ul>
