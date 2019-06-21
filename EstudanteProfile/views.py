@@ -141,7 +141,7 @@ def search_works(request):
 
     key = request.GET.get('key')
     user = request.user
-    user_data = {'user': user,'proposals': Trabalho.objects.filter(private=False, titulo__contains=key),
+    user_data = {'user': user, 'proposals': Trabalho.objects.filter(private=False, titulo__icontains=key),
                  'work_detail': reverse('webapp:estudante:home_page')}
 
     return render(request, 'pages/student-mainpage.html', user_data)
